@@ -10,6 +10,7 @@ public class ServiceProvider {
 
     private Context context;
     private PhoneNumber phoneNumber = null;
+    private OperatorHolder operatorHolder = null;
 
     public ServiceProvider(Context context) {
         this.context = context;
@@ -23,8 +24,18 @@ public class ServiceProvider {
         if(this.phoneNumber != null) {
             return this.phoneNumber;
         }
-        OperatorHolder operatorHolder = new OperatorHolder(context);
-        this.phoneNumber = new PhoneNumber("0702871236", operatorHolder);
+        this.phoneNumber = new PhoneNumber("0724510227", getOperatorHolder());
         return this.phoneNumber;
+    }
+
+    public void changeCurrentPhoneNumber(String phonenumber) {
+        this.phoneNumber = new PhoneNumber(phonenumber, getOperatorHolder());
+    }
+
+    private OperatorHolder getOperatorHolder() {
+        if (operatorHolder != null) {
+            return this.operatorHolder;
+        }
+        return new OperatorHolder(context);
     }
 }

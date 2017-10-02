@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "mainactivity";
     private static final int REQUEST_OPERATOR = 1;
+    private static final int CALL = 2;
     private TextView text;
 
     @Override
@@ -19,14 +20,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[] {Manifest.permission.READ_PHONE_STATE}, REQUEST_OPERATOR);
-            requestPermissions(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_OPERATOR);
-            //Lägg till ett till för senaste permissionet.?
+            requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, CALL);
         }
 
         CallManager callManager = new CallManager(new ServiceProvider(this));
         callManager.startForwarding();
-
-
     }
 
     @Override
