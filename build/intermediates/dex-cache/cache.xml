@@ -3,84 +3,48 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\dd5ccd9e055d0fa4e74b9b7dc57cb7c847a2f8f2\output\jars\classes.jar"
+        jar="C:\Users\karls\.android\build-cache\bb0a0f03e8d158f9107d6827897350ea87eb9339\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1bedcf6666ba565cba073f0e727a161cc3f73377\classes.dex" />
+        sha1="425c7b17887e5c3f8cbdf67ba171bc246f29b42c">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a8cfa0ede5ae727a3d2682a6682af10f28f70dee\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\6d754e9df3fd68017ab967302aecafa0c22842fc\output\jars\classes.jar"
+        jar="C:\Users\karls\.android\build-cache\dfd500a200631b1ea0405d6ed11f752124dbbee6\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3e9b48a63029c94216024ad869d6c0e2262bea72\classes.dex" />
+        sha1="93c10d68ab5ea070f15782ae6d3a28d1f1d8f45e">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e62626dc636029538f0a4bf15513877420f2fc0c\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\27ebebda7276f5e32a54fb4a510857cad0a72b40\output\jars\classes.jar"
+        jar="C:\Users\karls\.android\build-cache\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_82a352c1ab5a9a5773cf90b29612442086e9bb4e\classes.dex" />
+        sha1="9ab787a20aae245b5b3651ae0b9c38459eb37715">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d7ba32c7bc6f10285d7203755a7deb897beac5bc\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\karls\.android\build-cache\ad5b5c43187c545a1bcd094e41ec66b8d323d9bc\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_27f7161bd6ee181701f63714498a7b9e088a35ce\classes.dex" />
+        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cba6df1cf2fcaf99dc861ccd3ce9784088f2258b\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\ac21fa5fb7c795b90d626aef0eb1b32b43a632ed\output\jars\classes.jar"
+        jar="C:\Users\karls\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.0\support-annotations-25.3.0.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="952944218ecedea1554a513dec0c14d570642843">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0f8457e1f17781a40a1e5d323206178770c33ca3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\karls\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_da7a296a2b54506c42e2e119049d71c1ab04f8f9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\0c4c6ccc662e85ec662108bbd217de77c61a2895\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6796d9f6ae0f6909ad2041c4e8ad24849175cc3e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\karls\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\26.0.0-alpha1\support-annotations-26.0.0-alpha1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="023ee503b631f69511e335a061ea008f8da60f40">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-26.0.0-alpha1_d60630f01257ab0570b2022d5ff8c6653316aa65\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\d13ae16f7c06be768d3f99f292b83ce5125621db\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_22cbc132f5ab487ffa58de5dced858f9fcbb6064\classes.dex" />
+        sha1="dd84903d2e1af25a6081ef9038ad863cb14ca3a0">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.0_60b4df5c534c9a383108dcd8667e809c28d9e037\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -93,39 +57,102 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\karls\.android\build-cache\10b676a81caee9a1a146bbe0ec32d44ff9aca560\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fbb206f7a119f66ce171d95aae1225a5b209a8b7">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dea37ac6e3e502fcf02f0e47d5ca6904c95ee80a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\.android\build-cache\6c07a31e3ffe2d59484dc2b1a3a7ef67fca55c29\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="518768f3200963fbfec652f498da2c9d39245234">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e8bf7fe090a74e7110e6da65cc94bf2e2df1bb94\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\.android\build-cache\b1593ba876b1940017eb82a9a8e2ab53346ebddf\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_87773b95aa973a61b67e73fb92d61977ade85f3d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\.android\build-cache\b5db25a7885533384409b28777b705459df4b550\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cdb7dc3e8371765cc6ad0187aa053ccb7e081070\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\.android\build-cache\3a488d012244ced1459cb35f814cd386620ec8d7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a3e61044038fb54cddf6b8dc79f41d2b57f42caf">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dfc79a387ffa24fad5e7aba3d9196197cc391300\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_27f7161bd6ee181701f63714498a7b9e088a35ce\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_da7a296a2b54506c42e2e119049d71c1ab04f8f9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\.android\build-cache\907d3a1f4dc3db3f04dc8fdf6010ecfd3adc6174\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2650a120a9bed853581213d4fe810e3832c45a7c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\karls\.android\build-cache\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_448175060f8626af807443963331ce8100f47ceb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="84e8b4f68c6fb65b9ecf75f22f19007b574b35a7">
+        sha1="7fd648c150dc5eca0230f2ede9a26bbe976739a4">
         <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8fa12710152c23742145037f3e937d5de3ad7c19\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\22444a41a3554313470f64f7f52fd4db96d1116b\output\jars\classes.jar"
+        jar="C:\Users\karls\.android\build-cache\dfce29e6dfb080e35d44c67ab29920340ead05d2\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_958b4f278b96d69426291c7059c13cc5d7832202\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\6c1441710952f91e0370ce25cbebd8f8a4632ea9\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_75fd662186c98b883e3ea3046659e8429d347c9c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\karls\.android\build-cache\66b798bd635c599ad7fd6b402bb34564a8521db6\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="9935891f23923f39d002087085d9696568a9f657">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a224b6939a9bd7e993ace8c3c8ebc9d680d4311f\classes.dex" />
+        sha1="93c1199fcb0a34b980e6fff8350daff62e696ec2">
+        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_06438442d6cce72a9895db25001b23f3df6af498\classes.dex" />
     </item>
 
 </items>

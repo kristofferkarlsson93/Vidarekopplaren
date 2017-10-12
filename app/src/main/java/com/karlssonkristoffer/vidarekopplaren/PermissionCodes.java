@@ -5,6 +5,6 @@ package com.karlssonkristoffer.vidarekopplaren;
  */
 
 public class PermissionCodes {
-
+    public static final int PERMISSION_REQUEST_OPERATOR = 1;
     public static final int PERMISSION_CALL = 2;
 }

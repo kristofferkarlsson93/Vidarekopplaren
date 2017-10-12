@@ -30,8 +30,9 @@ public class PhoneNumber {
 
     public String getPhoneNumberWithForwardPrefix() {
         return (getForwardingPrefixBasedOnOperator(operatorHolder.getOperatorName()) +
-                phoneNumber + '#');
+                phoneNumber + "#");
     }
+
     public String getOperator() {
         return operatorHolder.getOperatorName();
     }

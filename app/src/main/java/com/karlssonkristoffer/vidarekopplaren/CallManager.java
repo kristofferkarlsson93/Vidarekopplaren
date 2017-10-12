@@ -37,7 +37,6 @@ public class CallManager {
     }
 
     public void startForwarding() {
-        String prelNumberStr = "**21*0724510227#";
         Log.d(TAG, phoneNumber.getPhoneNumberWithForwardPrefix());
         Intent callForwardIntent = new Intent(Intent.ACTION_CALL);
         Uri uri = Uri.parse("tel:" + phoneNumber.getPhoneNumberWithForwardPrefix());
