@@ -17,15 +17,16 @@ application
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:5:5-19:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\karls\.android\build-cache\264659b8b93d606d77de9c95eb4963cb2e5d74fb\output\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.3.0] C:\Users\karls\.android\build-cache\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.android\build-cache\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\b5db25a7885533384409b28777b705459df4b550\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\ad5b5c43187c545a1bcd094e41ec66b8d323d9bc\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:transition:25.3.0] C:\Users\karls\.android\build-cache\10b676a81caee9a1a146bbe0ec32d44ff9aca560\output\AndroidManifest.xml:26:5-20
+MERGED from [Vidarekopplaren.subProject:circleviewlibrary:unspecified] C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\subProject\circleviewlibrary\build\intermediates\bundles\default\AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.android\build-cache\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:25.3.0] C:\Users\karls\.android\build-cache\b1593ba876b1940017eb82a9a8e2ab53346ebddf\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.0] C:\Users\karls\.android\build-cache\dfce29e6dfb080e35d44c67ab29920340ead05d2\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.0] C:\Users\karls\.android\build-cache\bb0a0f03e8d158f9107d6827897350ea87eb9339\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-ui:25.3.0] C:\Users\karls\.android\build-cache\907d3a1f4dc3db3f04dc8fdf6010ecfd3adc6174\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.0] C:\Users\karls\.android\build-cache\6c07a31e3ffe2d59484dc2b1a3a7ef67fca55c29\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\b5db25a7885533384409b28777b705459df4b550\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\ad5b5c43187c545a1bcd094e41ec66b8d323d9bc\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-compat:25.3.0] C:\Users\karls\.android\build-cache\dfd500a200631b1ea0405d6ed11f752124dbbee6\output\AndroidManifest.xml:29:5-20
 	android:label
 		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:8:9-41
@@ -69,16 +70,17 @@ uses-sdk
 INJECTED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\karls\.android\build-cache\264659b8b93d606d77de9c95eb4963cb2e5d74fb\output\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:design:25.3.0] C:\Users\karls\.android\build-cache\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\output\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.android\build-cache\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\output\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\b5db25a7885533384409b28777b705459df4b550\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\ad5b5c43187c545a1bcd094e41ec66b8d323d9bc\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.3.0] C:\Users\karls\.android\build-cache\3a488d012244ced1459cb35f814cd386620ec8d7\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:transition:25.3.0] C:\Users\karls\.android\build-cache\10b676a81caee9a1a146bbe0ec32d44ff9aca560\output\AndroidManifest.xml:20:5-44
+MERGED from [Vidarekopplaren.subProject:circleviewlibrary:unspecified] C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\subProject\circleviewlibrary\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.android\build-cache\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\output\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:25.3.0] C:\Users\karls\.android\build-cache\b1593ba876b1940017eb82a9a8e2ab53346ebddf\output\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.0] C:\Users\karls\.android\build-cache\dfce29e6dfb080e35d44c67ab29920340ead05d2\output\AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.0] C:\Users\karls\.android\build-cache\bb0a0f03e8d158f9107d6827897350ea87eb9339\output\AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.3.0] C:\Users\karls\.android\build-cache\907d3a1f4dc3db3f04dc8fdf6010ecfd3adc6174\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.0] C:\Users\karls\.android\build-cache\6c07a31e3ffe2d59484dc2b1a3a7ef67fca55c29\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\b5db25a7885533384409b28777b705459df4b550\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\ad5b5c43187c545a1bcd094e41ec66b8d323d9bc\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-compat:25.3.0] C:\Users\karls\.android\build-cache\dfd500a200631b1ea0405d6ed11f752124dbbee6\output\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.0] C:\Users\karls\.android\build-cache\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\output\AndroidManifest.xml:23:9-59
@@ -90,16 +92,16 @@ MERGED from [com.android.support:support-compat:25.3.0] C:\Users\karls\.android\
 		INJECTED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml
 meta-data#android.support.VERSION
 ADDED from [com.android.support:design:25.3.0] C:\Users\karls\.android\build-cache\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.android\build-cache\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\b5db25a7885533384409b28777b705459df4b550\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\ad5b5c43187c545a1bcd094e41ec66b8d323d9bc\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:recyclerview-v7:25.3.0] C:\Users\karls\.android\build-cache\3a488d012244ced1459cb35f814cd386620ec8d7\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:transition:25.3.0] C:\Users\karls\.android\build-cache\10b676a81caee9a1a146bbe0ec32d44ff9aca560\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.android\build-cache\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-v4:25.3.0] C:\Users\karls\.android\build-cache\b1593ba876b1940017eb82a9a8e2ab53346ebddf\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-fragment:25.3.0] C:\Users\karls\.android\build-cache\dfce29e6dfb080e35d44c67ab29920340ead05d2\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-media-compat:25.3.0] C:\Users\karls\.android\build-cache\bb0a0f03e8d158f9107d6827897350ea87eb9339\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-ui:25.3.0] C:\Users\karls\.android\build-cache\907d3a1f4dc3db3f04dc8fdf6010ecfd3adc6174\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-utils:25.3.0] C:\Users\karls\.android\build-cache\6c07a31e3ffe2d59484dc2b1a3a7ef67fca55c29\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\b5db25a7885533384409b28777b705459df4b550\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\karls\.android\build-cache\ad5b5c43187c545a1bcd094e41ec66b8d323d9bc\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:support-compat:25.3.0] C:\Users\karls\.android\build-cache\dfd500a200631b1ea0405d6ed11f752124dbbee6\output\AndroidManifest.xml:25:5-27:34
 	android:value
 		ADDED from [com.android.support:design:25.3.0] C:\Users\karls\.android\build-cache\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\output\AndroidManifest.xml:27:9-31

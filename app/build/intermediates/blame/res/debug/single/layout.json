@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\layout\\abc_activity_chooser_view.xml"
-    },
-    {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
         "source": "C:\\Users\\karls\\.android\\build-cache\\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\\output\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
@@ -112,12 +112,12 @@
         "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\layout\\notification_template_media.xml"
-    },
-    {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
         "source": "C:\\Users\\karls\\.android\\build-cache\\b579ed736ee7f190103d1f34a62aa6cb1d959a1a\\output\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\layout\\notification_template_media.xml"
     },
     {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
