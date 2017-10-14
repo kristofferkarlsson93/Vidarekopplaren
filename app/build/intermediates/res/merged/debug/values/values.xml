@@ -115,7 +115,6 @@
     <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
     <color name="bright_foreground_material_dark">@android:color/white</color>
     <color name="bright_foreground_material_light">@android:color/black</color>
-    <color name="button">#A5FFCA</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
     <color name="colorAccent">#FF4081</color>
@@ -169,6 +168,8 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="startbutton">#A5FFCA</color>
+    <color name="stopbutton">#F783A6</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
@@ -595,6 +596,7 @@
     <dimen name="design_tab_text_size_2line">12sp</dimen>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
+    <dimen name="fab_margin">16dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
@@ -646,6 +648,7 @@
     <integer name="hide_password_duration">320</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="_00_00">00:00</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -687,7 +690,11 @@
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="search_menu_title">Search</string>
+    <string name="sluta_vidarekoppla">Sluta vidarekoppla</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stopp">Stopp</string>
+    <string name="title_activity_currently_forwarding">CurrentlyForwardingActivity</string>
+    <string name="vidarekopplingen_slutar_klockan">Vidarekopplingen slutar klockan:</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -702,6 +709,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
         <item name="listLayout">@layout/abc_select_dialog_material</item>

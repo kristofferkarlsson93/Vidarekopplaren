@@ -1,4 +1,4 @@
-#Fri Oct 13 22:33:41 CEST 2017
+#Sat Oct 14 23:25:19 CEST 2017
 base.0=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4
 renamed.0=classes.dex
 file.0=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4\\classes.dex

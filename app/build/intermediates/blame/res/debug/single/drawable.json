@@ -4,6 +4,10 @@
         "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
+        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\startbutton.xml",
+        "source": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\drawable\\startbutton.xml"
+    },
+    {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
         "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\drawable\\abc_btn_check_material.xml"
     },
@@ -38,6 +42,10 @@
     {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
         "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\stopbutton.xml",
+        "source": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\drawable\\stopbutton.xml"
     },
     {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",

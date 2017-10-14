@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Vidarekopplaren</string>
+    <string name="title_activity_currently_forwarding">CurrentlyForwardingActivity</string>
+    <string name="stopp">Stopp</string>
+    <string name="sluta_vidarekoppla">Sluta vidarekoppla</string>
+    <string name="vidarekopplingen_slutar_klockan">Vidarekopplingen slutar klockan:</string>
+    <string name="_00_00">00:00</string>
 </resources>

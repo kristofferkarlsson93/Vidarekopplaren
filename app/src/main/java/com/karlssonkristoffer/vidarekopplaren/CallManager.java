@@ -42,7 +42,7 @@ public class CallManager {
         Uri uri = Uri.parse("tel:" + phoneNumber.getPhoneNumberWithForwardPrefix());
         callForwardIntent.setData(uri);
 
-        Log.d(TAG + "actualnumber", callForwardIntent.getData().toString());
+        Log.d(TAG + " actualnumb", callForwardIntent.getData().toString());
 
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "In permission");
@@ -53,12 +53,17 @@ public class CallManager {
 
     public void stopForwarding() {
         Log.d(TAG, PhoneNumber.getCancelNumberBasedOnOperator(phoneNumber.getOperator()));
-        /*Intent cancelForwardIntent = new Intent((Intent.ACTION_CALL));
+        Intent cancelForwardIntent = new Intent(Intent.ACTION_CALL);
         Uri uri = Uri.fromParts("tel",
                 PhoneNumber.getCancelNumberBasedOnOperator(phoneNumber.getOperator()), "#");
         cancelForwardIntent.setData(uri);
-        context.startActivity(cancelForwardIntent);*/
-    }
+
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "In permission");
+            context.startActivity(cancelForwardIntent);
+        }
+
+}
 
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
