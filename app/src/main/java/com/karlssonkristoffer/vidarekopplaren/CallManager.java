@@ -42,10 +42,8 @@ public class CallManager {
         Uri uri = Uri.parse("tel:" + phoneNumber.getPhoneNumberWithForwardPrefix());
         callForwardIntent.setData(uri);
 
-        Log.d(TAG + " actualnumb", callForwardIntent.getData().toString());
-
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "In permission");
+            Log.d(TAG, "Calling");
             context.startActivity(callForwardIntent);
         }
 

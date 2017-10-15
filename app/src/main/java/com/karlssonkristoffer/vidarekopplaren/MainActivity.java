@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         newPhoneNumberText = (EditText) findViewById(R.id.newPhoneNumberText);
@@ -105,21 +109,20 @@ public class MainActivity extends AppCompatActivity {
                 calendar.set(Calendar.MINUTE, minute);
                 calendar.set(Calendar.SECOND, 0);
 
-                callManager = new CallManager(new ServiceProvider(MainActivity.this));
-                callManager.startForwarding();
-                hasCalled = true;
-                /*Intent startTimerIntent = new Intent(MainActivity.this, CallHandler.class);
+                Intent startTimerIntent = new Intent(MainActivity.this, CallHandler.class);
                 startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent);
-*/
+                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
+
                 Intent startNextScreenIntent = new Intent(MainActivity.this, CurrentlyForwardingActivity.class);
                 //startNextScreenIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 //startNextScreenIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startNextScreenIntent.putExtra(STOP_TIME_KEY, stopTime);
                 startActivity(startNextScreenIntent);
-                //finish();
+                callManager = new CallManager(new ServiceProvider(MainActivity.this));
+                callManager.startForwarding();
+                hasCalled = true;
             }
         });
     }
