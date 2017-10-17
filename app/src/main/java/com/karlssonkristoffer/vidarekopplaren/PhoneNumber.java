@@ -17,11 +17,18 @@ public class PhoneNumber {
 
     private String phoneNumber;
     private OperatorHolder operatorHolder;
+    private boolean hasOperatorInformation;
 
     public PhoneNumber(String phoneNumber, OperatorHolder operatorHolder)
     {
         this.phoneNumber = phoneNumber;
         this.operatorHolder = operatorHolder;
+        hasOperatorInformation = false;
+    }
+
+    public PhoneNumber(String phoneNumber) {
+        hasOperatorInformation = true;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPhoneNumber() {
@@ -33,8 +40,16 @@ public class PhoneNumber {
                 phoneNumber + "#");
     }
 
+    public boolean hasOperatorInformation() {
+        return hasOperatorInformation;
+    }
+
     public String getOperator() {
         return operatorHolder.getOperatorName();
+    }
+
+    public void setOperatorHolder(OperatorHolder operatorHolder) {
+        operatorHolder = operatorHolder;
     }
 
     public static String getForwardingPrefixBasedOnOperator(String operator) {

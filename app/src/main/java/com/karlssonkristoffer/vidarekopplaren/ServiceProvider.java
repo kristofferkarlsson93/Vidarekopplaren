@@ -9,6 +9,11 @@ import android.content.Context;
 public class ServiceProvider {
 
     private Context context;
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = new PhoneNumber(phoneNumber, getOperatorHolder());
+    }
+
     private PhoneNumber phoneNumber = null;
     private OperatorHolder operatorHolder = null;
 
