@@ -16,7 +16,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String PHONE_NUMBER_KEY = "PHONE_NUMBER_KEY";
     public static final String STOP_TIME_KEY = "STOP_TIME_KEY";
+    public static final int CANCEL_INTENT_CODE = 100;
 
     private EditText newPhoneNumberText;
     private CircleAlarmTimerView timerView;
@@ -50,11 +50,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-         dbHelper = new DatabaseHelper(this);
-        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+        dbHelper = new DatabaseHelper(this);
+        //dbHelper.setCurrentlyCallingFlag(false);
+        if(dbHelper.getCurrentlyCallingFlag()) {
+            startNextActivity();
+        }
+        if (((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0)) {
+
+            Log.d(TAG, "Till nästa aktivitet");
             finish();
             return;
         }
+
+        /*Log.d("database", "StartValue = 0/false");
+        dbHelper.getCurrentlyCallingFlag();
+        Log.d("database: ", "Changing to true = 1");
+        dbHelper.setCurrentlyCallingFlag(true);
+        Log.d("database: ", "check should be true");
+        dbHelper.getCurrentlyCallingFlag();
+        Log.d("database: ", "change to false = 0");
+        dbHelper.setCurrentlyCallingFlag(false);
+        Log.d("database: ", "Check Should be false = 0");
+        dbHelper.getCurrentlyCallingFlag();*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -62,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[] {Manifest.permission.READ_PHONE_STATE}, PermissionCodes.PERMISSION_REQUEST_OPERATOR);
             requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, PermissionCodes.PERMISSION_CALL);
         }
+
         manageListView();
         manageInputField();
         manageTimer();
@@ -86,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         );
-
 
     }
 
@@ -137,11 +155,11 @@ public class MainActivity extends AppCompatActivity {
                         if(insertData) {
                             toastOut(phoneNumber.getPhoneNumber() + " tillagt");
                             newPhoneNumberText.setText("");
+                            manageListView();
                             View view = MainActivity.this.getCurrentFocus();
                             if (view != null) {
                                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                                manageListView();
                             }
                         } else {
                             toastOut("Det blev dåligt. Prova igen");
@@ -190,23 +208,25 @@ public class MainActivity extends AppCompatActivity {
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
                 calendar.set(Calendar.SECOND, 0);
+                dbHelper.setCurrentlyCallingFlag(true);
 
-                Intent startTimerIntent = new Intent(MainActivity.this, CallHandler.class);
+                Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
                 startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
+                startNextActivity();
 
-                Intent startNextScreenIntent = new Intent(MainActivity.this, CurrentlyForwardingActivity.class);
-                //startNextScreenIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                //startNextScreenIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startNextScreenIntent.putExtra(STOP_TIME_KEY, stopTime);
-                startActivity(startNextScreenIntent);
                 callManager = new CallManager(new ServiceProvider(MainActivity.this));
                 callManager.startForwarding();
-                hasCalled = true;
             }
         });
+    }
+
+    private void startNextActivity() {
+        Intent startNextScreenIntent = new Intent(MainActivity.this, CurrentlyForwardingActivity.class);
+        startNextScreenIntent.putExtra(STOP_TIME_KEY, stopTime);
+        startActivity(startNextScreenIntent);
     }
 
 

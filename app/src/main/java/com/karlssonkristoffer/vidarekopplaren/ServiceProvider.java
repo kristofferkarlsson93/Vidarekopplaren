@@ -20,7 +20,7 @@ public class ServiceProvider {
         return this.context;
     }
 
-    public PhoneNumber getPhonenumberObject() {
+    public PhoneNumber getPhonenumberObject(String phoneNumber) {
         if(this.phoneNumber != null) {
             return this.phoneNumber;
         }

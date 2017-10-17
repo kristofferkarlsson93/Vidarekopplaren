@@ -5,26 +5,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 /**
  * Created by karls on 14/10/2017.
  */
 
-public class CallHandler extends BroadcastReceiver {
+public class ResetForwardingHandler extends BroadcastReceiver {
 
-    private final String TAG =  "callhandler";
+    private final String TAG =  "resetforwardingactivity";
     private CallManager callManager;
+    private DatabaseHelper dbHelper;
+    private Context context;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context,"Hej", Toast.LENGTH_LONG).show();
-        Log.d(TAG, "HEEEEEEEj" );
+        dbHelper = new DatabaseHelper(context);
+        this.context = context;
         Bundle extras = intent.getExtras();
-        String phonenumber = extras.getString(MainActivity.PHONE_NUMBER_KEY);
-        Log.d(TAG, phonenumber);
+        dbHelper.setCurrentlyCallingFlag(false);
+        Log.d(TAG, String.valueOf(dbHelper.getCurrentlyCallingFlag()));
         CallManager callManager = new CallManager(new ServiceProvider(context));
         callManager.stopForwarding();
 
     }
+
+
 }

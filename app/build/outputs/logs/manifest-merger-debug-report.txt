@@ -66,10 +66,10 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
 		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:20:27-74
-receiver#com.karlssonkristoffer.vidarekopplaren.CallHandler
-ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:24:9-49
+receiver#com.karlssonkristoffer.vidarekopplaren.ResetForwardingHandler
+ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:24:9-60
 	android:name
-		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:24:19-46
+		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:24:19-57
 activity#com.karlssonkristoffer.vidarekopplaren.CurrentlyForwardingActivity
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:26:9-29:68
 	android:label

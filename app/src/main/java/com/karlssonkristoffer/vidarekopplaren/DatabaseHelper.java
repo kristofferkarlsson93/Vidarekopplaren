@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by karls on 16/10/2017.
@@ -12,7 +13,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final int VERSION = 2;
+    private static final String TAG = "databasehelper";
+
+    private static final int VERSION = 6;
     private static final String PHONE_NUMBER_TABLE = "phone_numbers";
     private static final String HAS_CALLED_TABLE = "has_called";
     private static final String COL_0 = "ID";
@@ -34,8 +37,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String dropTableIfExists = "DROP TABLE IF EXISTS " + PHONE_NUMBER_TABLE;
-        db.execSQL(dropTableIfExists);
+        String dropPhoneNumberTableIfExists = "DROP TABLE IF EXISTS "
+                + PHONE_NUMBER_TABLE;
+        String dropHasCalledTableIfExists = "DROP TABLE IF EXISTS "
+                + HAS_CALLED_TABLE;
+
+        db.execSQL(dropPhoneNumberTableIfExists);
+        db.execSQL(dropHasCalledTableIfExists);
         onCreate(db);
     }
 
@@ -63,25 +71,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void setCurrentlyCallingFlag(boolean status) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int statusInt = status ? 1 : 0;
-       String updateHasCalledTable = "INSERT OR REPLACE INTO "
+       SQLiteDatabase db = this.getWritableDatabase();
+       int statusInt = status ? 1 : 0;
+        Log.d(TAG, " StatusInt i set: " + statusInt);
+       String updateHasCalledTable = "UPDATE "
            + HAS_CALLED_TABLE
-           + " ("
+           + " SET "
            + COL_1_HAS_CALLED_TABLE
-           + ") VALUES ("
-           + statusInt +
-           ")";
+           + " = "
+           + statusInt;
         db.execSQL(updateHasCalledTable);
     }
 
     public boolean getCurrentlyCallingFlag() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String getFlag = "SELECT 1 FROM "
+        boolean result = false;
+        String getFlag = "SELECT * FROM "
             + HAS_CALLED_TABLE;
         Cursor data = db.rawQuery(getFlag, null);
-
-        boolean result = data.getInt(0) == 1;
+        if (data.getCount() > 0) {
+            data.moveToFirst();
+            result = data.getInt(1) > 0;
+            Log.d(TAG, "Det som kommer ut i get: " + data.getInt(data.getColumnIndex(COL_1_HAS_CALLED_TABLE)));
+            Log.d(TAG, "Boolen i get " + String.valueOf(result));
+        }
         return result;
     }
 
@@ -97,7 +110,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void createHasCalledTable(SQLiteDatabase db) {
-
         String createHasCalledTable = "CREATE TABLE "
             + HAS_CALLED_TABLE
             + " ("
@@ -105,5 +117,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COL_1_HAS_CALLED_TABLE + " INTEGER "
             + ")";
         db.execSQL(createHasCalledTable);
+
+        String setStartValue = "INSERT INTO "
+                + HAS_CALLED_TABLE
+                + " ("
+                + COL_1_HAS_CALLED_TABLE
+                +") VALUES (0)";
+        db.execSQL(setStartValue);
+
     }
 }
