@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -39,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText newPhoneNumberText;
     private CircleAlarmTimerView timerView;
-    private String startTime;
     private String stopTime;
-    private PendingIntent cancelForwardingIntent;
     private String currentPhoneNumber;
     private CallManager callManager;
-    private boolean hasCalled = false;
     private ListView phoneNumberListView;
     private DatabaseHelper dbHelper;
+    private ServiceProvider serviceProvider;
+    private Button startForwardingButton;
+    private View prelClickedNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,23 +57,10 @@ public class MainActivity extends AppCompatActivity {
             startNextActivity();
         }
         if (((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0)) {
-
             Log.d(TAG, "Till nästa aktivitet");
             finish();
             return;
         }
-
-        /*Log.d("database", "StartValue = 0/false");
-        dbHelper.getCurrentlyCallingFlag();
-        Log.d("database: ", "Changing to true = 1");
-        dbHelper.setCurrentlyCallingFlag(true);
-        Log.d("database: ", "check should be true");
-        dbHelper.getCurrentlyCallingFlag();
-        Log.d("database: ", "change to false = 0");
-        dbHelper.setCurrentlyCallingFlag(false);
-        Log.d("database: ", "Check Should be false = 0");
-        dbHelper.getCurrentlyCallingFlag();*/
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -81,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, PermissionCodes.PERMISSION_CALL);
         }
 
+        startForwardingButton = (Button) findViewById(R.id.startForwardingButton);
+        startForwardingButton.setEnabled(false);
+        serviceProvider = new ServiceProvider(this);
         manageListView();
         manageInputField();
         manageTimer();
@@ -100,8 +91,15 @@ public class MainActivity extends AppCompatActivity {
             new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    view.setBackgroundColor(0xCCA5FFCA);
                     MainActivity.this.currentPhoneNumber = String.valueOf(parent.getItemAtPosition(position));
+                    serviceProvider.setPhoneNumber(currentPhoneNumber);
                     Toast.makeText(MainActivity.this, MainActivity.this.currentPhoneNumber, Toast.LENGTH_LONG).show();
+                    startForwardingButton.setEnabled(true);
+                    if(prelClickedNumber != null) {
+                        prelClickedNumber.setBackgroundColor(0xFFFE91B2);
+                    }
+                    prelClickedNumber = view;
                 }
             }
         );
@@ -127,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         addButton.setVisibility(View.VISIBLE);
+                        newPhoneNumberText.setTextColor(Color.BLACK);
                     }
 
                     @Override
@@ -150,7 +149,14 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        PhoneNumber phoneNumber = getPhoneNumberFromInput();
+                        String input = getPhoneNumberFromInput();
+                         input = PhoneNumber.formatPhoneNumber(input);
+                        if (!PhoneNumber.validatePhoneNumber(input)) {
+                            toastOut("Felformaterat telefonnummer");
+                            newPhoneNumberText.setTextColor(Color.RED);
+                            return;
+                        }
+                        PhoneNumber phoneNumber = new PhoneNumber(input);
                         boolean insertData = dbHelper.addPhoneNumber(phoneNumber);
                         if(insertData) {
                             toastOut(phoneNumber.getPhoneNumber() + " tillagt");
@@ -162,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                             }
                         } else {
-                            toastOut("Det blev dåligt. Prova igen");
+                            toastOut("Oväntat fel. Prova igen");
                         }
                         addButton.setVisibility(View.GONE);
                         newPhoneNumberText.setVisibility(View.GONE);
@@ -172,11 +178,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private PhoneNumber getPhoneNumberFromInput() {
-        String text = newPhoneNumberText.getText().toString();
-        return new PhoneNumber(text, new OperatorHolder(this));
-    }
-
     private void manageTimer() {
         final TextView startTimeText = (TextView) findViewById(R.id.startTimeText);
         final TextView stopTimeText = (TextView) findViewById(R.id.stopTimeText);
@@ -184,8 +185,7 @@ public class MainActivity extends AppCompatActivity {
         timerView.setOnTimeChangedListener(new CircleAlarmTimerView.OnTimeChangedListener() {
             @Override
             public void start(String starting) {
-                MainActivity.this.startTime = starting;
-                startTimeText.setText(starting);
+
             }
 
             @Override
@@ -197,7 +197,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void manageStartForwardingButton() {
-        final Button startForwardingButton = (Button) findViewById(R.id.startForwardingButton);
         startForwardingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int hour = Integer.parseInt(stopTime.substring(0,2));
@@ -208,16 +207,19 @@ public class MainActivity extends AppCompatActivity {
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
                 calendar.set(Calendar.SECOND, 0);
+                if(calendar.getTimeInMillis() <= System.currentTimeMillis()) {
+                    toastOut("Välj en tid i framtiden");
+                    return;
+                }
                 dbHelper.setCurrentlyCallingFlag(true);
-
                 Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
                 startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
                 startNextActivity();
 
-                callManager = new CallManager(new ServiceProvider(MainActivity.this));
+                callManager = new CallManager(MainActivity.this.serviceProvider);
                 callManager.startForwarding();
             }
         });
@@ -229,6 +231,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(startNextScreenIntent);
     }
 
+    private String getPhoneNumberFromInput() {
+        String text = newPhoneNumberText.getText().toString();
+        return text;
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

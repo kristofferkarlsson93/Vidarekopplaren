@@ -7,4 +7,10 @@
     <color name="background">#FE91B2</color>
     <color name="startbutton">#A5FFCA</color>
     <color name="stopbutton">#F783A6</color>
+
+    <color name="currentlyForwardingbackground">#000</color>
+    <color name="markedItemBackgroundColor">#000</color>
+
+    <color name="white">#fff</color>
+
 </resources>

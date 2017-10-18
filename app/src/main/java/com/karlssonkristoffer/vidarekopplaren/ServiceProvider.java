@@ -9,13 +9,9 @@ import android.content.Context;
 public class ServiceProvider {
 
     private Context context;
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = new PhoneNumber(phoneNumber, getOperatorHolder());
-    }
-
     private PhoneNumber phoneNumber = null;
     private OperatorHolder operatorHolder = null;
+    private boolean hasPhoneNumber = false;
 
     public ServiceProvider(Context context) {
         this.context = context;
@@ -25,12 +21,12 @@ public class ServiceProvider {
         return this.context;
     }
 
-    public PhoneNumber getPhonenumberObject(String phoneNumber) {
-        if(this.phoneNumber != null) {
-            return this.phoneNumber;
-        }
-        this.phoneNumber = new PhoneNumber("0724510227", getOperatorHolder());
+    public PhoneNumber getPhonenumberObject() {
         return this.phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = new PhoneNumber(phoneNumber, getOperatorHolder());
     }
 
     public void changeCurrentPhoneNumber(String phonenumber) {
@@ -42,5 +38,9 @@ public class ServiceProvider {
             return this.operatorHolder;
         }
         return new OperatorHolder(context);
+    }
+
+    public boolean hasPhoneNumber() {
+        return hasPhoneNumber;
     }
 }

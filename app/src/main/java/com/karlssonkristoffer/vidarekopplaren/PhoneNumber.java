@@ -73,4 +73,17 @@ public class PhoneNumber {
                 return TELIA_CANCEL_NUMBER;
         }
     }
+
+    public static String formatPhoneNumber(String phoneNumber) {
+        phoneNumber = phoneNumber.replace("-", "");
+        phoneNumber = phoneNumber.replace(" ", "");
+        return phoneNumber;
+    }
+
+    public static final boolean validatePhoneNumber(String phoneNumber) {
+        if(phoneNumber.length()<9 || phoneNumber.length() > 10) {
+            return false;
+        }
+        return true;
+    }
 }

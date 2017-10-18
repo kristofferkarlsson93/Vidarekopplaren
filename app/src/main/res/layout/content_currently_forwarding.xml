@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/currentlyForwardingbackground"
     tools:context="com.karlssonkristoffer.vidarekopplaren.CurrentlyForwardingActivity">
 
     <TextView
@@ -15,6 +16,7 @@
         android:layout_marginTop="105dp"
         android:text="@string/vidarekopplingen_slutar_klockan"
         android:textSize="24sp"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +31,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/_00_00"
         android:textSize="32sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
