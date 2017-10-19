@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dbHelper = new DatabaseHelper(this);
-        //dbHelper.setCurrentlyCallingFlag(false);
         if(dbHelper.getCurrentlyCallingFlag()) {
             startNextActivity();
         }
@@ -94,10 +93,9 @@ public class MainActivity extends AppCompatActivity {
                     view.setBackgroundColor(0xCCA5FFCA);
                     MainActivity.this.currentPhoneNumber = String.valueOf(parent.getItemAtPosition(position));
                     serviceProvider.setPhoneNumber(currentPhoneNumber);
-                    Toast.makeText(MainActivity.this, MainActivity.this.currentPhoneNumber, Toast.LENGTH_LONG).show();
                     startForwardingButton.setEnabled(true);
                     if(prelClickedNumber != null) {
-                        prelClickedNumber.setBackgroundColor(0xFFFE91B2);
+                        prelClickedNumber.setBackgroundColor(0xFFffc5a5);
                     }
                     prelClickedNumber = view;
                 }
