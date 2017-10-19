@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String PHONE_NUMBER_KEY = "PHONE_NUMBER_KEY";
     public static final String STOP_TIME_KEY = "STOP_TIME_KEY";
+    public static final String SHOULD_STOP_FORWARDING = "SHOULD_STOP_FORWARDING";
     public static final int CANCEL_INTENT_CODE = 100;
 
     private EditText newPhoneNumberText;
@@ -215,12 +216,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
                 startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-                startNextActivity();
 
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 12000 , pendingIntent);
+                startNextActivity();
                 callManager = new CallManager(MainActivity.this.serviceProvider);
                 callManager.startForwarding();
+
+
+                //calendar.getTimeInMillis()
+
             }
         });
     }
@@ -228,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
     private void startNextActivity() {
         Intent startNextScreenIntent = new Intent(MainActivity.this, CurrentlyForwardingActivity.class);
         startNextScreenIntent.putExtra(STOP_TIME_KEY, stopTime);
+        startNextScreenIntent.putExtra(SHOULD_STOP_FORWARDING, false);
         startActivity(startNextScreenIntent);
     }
 
