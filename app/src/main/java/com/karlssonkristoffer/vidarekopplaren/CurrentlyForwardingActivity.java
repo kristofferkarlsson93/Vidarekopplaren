@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -25,7 +23,6 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currently_forwarding);
-        Log.d("testKarlsson", "currentlyforwardingactivity");
         if(!this.dbHelper.getCurrentlyCallingFlag()) {
             finish();
             return;
@@ -33,7 +30,6 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
 
         String stopTime = getIntent().getStringExtra(MainActivity.STOP_TIME_KEY);
         boolean shouldStopForwarding = getIntent().getBooleanExtra(MainActivity.SHOULD_STOP_FORWARDING, true);
-        Log.d("testKarlsson", String.valueOf(shouldStopForwarding));
         getIntent().removeExtra(MainActivity.SHOULD_STOP_FORWARDING);
 
         KeyguardManager myKM = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
@@ -43,7 +39,6 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
             filter.addAction(Intent.ACTION_USER_PRESENT);
             filter.addAction(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
-            Log.d("testKarlsson", "Registrerar lock-lyssning");
             registerReceiver(reciver, filter);
         }
         TextView forwardStopTime = (TextView) findViewById(R.id.forwardStopTime);

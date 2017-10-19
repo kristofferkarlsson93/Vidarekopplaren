@@ -1,16 +1,12 @@
 package com.karlssonkristoffer.vidarekopplaren;
 
 import android.app.KeyguardManager;
-import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
 
 /**
  * Created by karls on 14/10/2017.
@@ -27,30 +23,34 @@ public class ResetForwardingHandler extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        this.context = context;
+        dbHelper = new DatabaseHelper(context);
         KeyguardManager keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
         if( keyguardManager.inKeyguardRestrictedInputMode()) {
-            Log.d("testKarlsson", "locked in resetHndler");
-            Intent currentlyForwardingActivity = new Intent(context, MainActivity.class);
+            sendNotification("Avslutar vidarekoppling vid upplåsning", 001);
+            Intent currentlyForwardingActivity = new Intent(context, CurrentlyForwardingActivity.class);
             currentlyForwardingActivity.putExtra(MainActivity.SHOULD_STOP_FORWARDING, true);
             context.startActivity(currentlyForwardingActivity);
         } else {
-            Log.d("testKarlsson", "öppen telefon");
-            dbHelper = new DatabaseHelper(context);
-            this.context = context;
+            sendNotification("Avslutar vidarekoppling", 002);
             dbHelper.setCurrentlyCallingFlag(false);
-            NotificationCompat.Builder notification = new NotificationCompat.Builder(context);
-            notification.setContentTitle("Vidarekoppling avslutad");
-            notification.setContentText("Avslutad");
-            Intent resetIntent =  new Intent(context, MainActivity.class);
+            Intent resetIntent =  new Intent(context, CurrentlyForwardingActivity.class);
             context.startActivity(resetIntent);
             CallManager callManager = new CallManager(new ServiceProvider(context));
             callManager.stopForwarding();
         }
+    }
 
+    private void sendNotification(String message, int id) {
+        NotificationCompat.Builder mBuilder =
+            new NotificationCompat.Builder(context)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Vidarekopplaren")
+                .setContentText(message);
 
-
-
-
+        NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(id, mBuilder.build());
     }
 
 

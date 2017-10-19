@@ -44,20 +44,20 @@ public class CircleAlarmTimerView extends View {
     private static final float DEFAULT_GAP_BETWEEN_CIRCLE_AND_LINE = 30;
     private static final float DEFAULT_NUMBER_SIZE = 10;
     private static final float DEFAULT_LINE_WIDTH = 0.5f;
-    private static final float DEFAULT_CIRCLE_BUTTON_RADIUS = 15;
+    private static final float DEFAULT_CIRCLE_BUTTON_RADIUS = 20;
     private static final float DEFAULT_CIRCLE_STROKE_WIDTH = 1;
     private static final float DEFAULT_TIMER_NUMBER_SIZE = 38;
     private static final float DEFAULT_TIMER_TEXT_SIZE = 18;
 
     // Default color
-    private static final int DEFAULT_CIRCLE_COLOR = 0xFFE9E2D9;
-    private static final int DEFAULT_CIRCLE_BUTTON_COLOR = 0xFFFFFFFF;
-    private static final int DEFAULT_LINE_COLOR = 0xFFFECE02;
-    private static final int DEFAULT_HIGHLIGHT_LINE_COLOR = 0xFF68C5D7;
-    private static final int DEFAULT_NUMBER_COLOR = 0xFF181318;
-    private static final int DEFAULT_TIMER_NUMBER_COLOR = 0xFFFFFFFF;
-    private static final int DEFAULT_TIMER_COLON_COLOR = 0xFFFA7777;
-    private static final int DEFAULT_TIMER_TEXT_COLOR = 0x99F0F9FF;
+    private static final int DEFAULT_CIRCLE_COLOR = 0x00E9E2D9;
+    private static final int DEFAULT_CIRCLE_BUTTON_COLOR = 0xFFA5FFCA;
+    private static final int DEFAULT_LINE_COLOR = 0xBBA5FFCA; //Sträcket som blir
+    private static final int DEFAULT_HIGHLIGHT_LINE_COLOR = 0xFFA5FFCA;
+    private static final int DEFAULT_NUMBER_COLOR = 0xFF181318;  //bakgrund i cirkeln
+    private static final int DEFAULT_TIMER_NUMBER_COLOR = 0xFFFFFFFF; //tiden i mitten
+    private static final int DEFAULT_TIMER_COLON_COLOR = 0x55000000; //Den andra plutten
+    private static final int DEFAULT_TIMER_TEXT_COLOR = 0xFFed07b3;
 
     // Paint
     private Paint mCirclePaint;
@@ -317,7 +317,7 @@ public class CircleAlarmTimerView extends View {
                     }
                     mCurrentTime = (int) (60 / (2 * Math.PI) * mCurrentRadian * 60);
                     invalidate();
-                } else if (mInCircleButton1 && isEnabled()) {
+                } else if (mInCircleButton1 && !isEnabled()) {
                     float temp = getRadian(event.getX(), event.getY());
                     if (mPreRadian > Math.toRadians(270) && temp < Math.toRadians(90)) {
                         mPreRadian -= 2 * Math.PI;

@@ -38,13 +38,11 @@ public class CallManager {
 
     public void startForwarding() {
 
-        Log.d(TAG, phoneNumber.getPhoneNumberWithForwardPrefix());
         Intent callForwardIntent = new Intent(Intent.ACTION_CALL);
         Uri uri = Uri.parse("tel:" + Uri.encode(phoneNumber.getPhoneNumberWithForwardPrefix()));
         callForwardIntent.setData(uri);
 
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "Calling");
             context.startActivity(callForwardIntent);
         }
 

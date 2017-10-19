@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             startNextActivity();
         }
         if (((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0)) {
-            Log.d(TAG, "Till nästa aktivitet");
             finish();
             return;
         }
@@ -120,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 newPhoneNumberText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                        Log.d(TAG, "Before");
                     }
 
                     @Override
@@ -180,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void manageTimer() {
-        final TextView startTimeText = (TextView) findViewById(R.id.startTimeText);
         final TextView stopTimeText = (TextView) findViewById(R.id.stopTimeText);
         timerView = (CircleAlarmTimerView) findViewById(R.id.circletimerview);
         timerView.setOnTimeChangedListener(new CircleAlarmTimerView.OnTimeChangedListener() {
@@ -200,32 +197,27 @@ public class MainActivity extends AppCompatActivity {
     private void manageStartForwardingButton() {
         startForwardingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int hour = Integer.parseInt(stopTime.substring(0,2));
-                int minute = Integer.parseInt(stopTime.substring(3,5));
-                Log.d(TAG, "" + hour + ":" + minute);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(System.currentTimeMillis());
-                calendar.set(Calendar.HOUR_OF_DAY, hour);
-                calendar.set(Calendar.MINUTE, minute);
-                calendar.set(Calendar.SECOND, 0);
-                if(calendar.getTimeInMillis() <= System.currentTimeMillis()) {
-                    toastOut("Välj en tid i framtiden");
-                    return;
-                }
-                dbHelper.setCurrentlyCallingFlag(true);
-                Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
-                startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            int hour = Integer.parseInt(stopTime.substring(0,2));
+            int minute = Integer.parseInt(stopTime.substring(3,5));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.HOUR_OF_DAY, hour);
+            calendar.set(Calendar.MINUTE, minute);
+            calendar.set(Calendar.SECOND, 0);
+            if(calendar.getTimeInMillis() <= System.currentTimeMillis()) {
+                toastOut("Välj en tid i framtiden");
+                return;
+            }
+            dbHelper.setCurrentlyCallingFlag(true);
+            Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
+            startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 12000 , pendingIntent);
-                startNextActivity();
-                callManager = new CallManager(MainActivity.this.serviceProvider);
-                callManager.startForwarding();
-
-
-                //calendar.getTimeInMillis()
-
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            startNextActivity();
+            callManager = new CallManager(MainActivity.this.serviceProvider);
+            callManager.startForwarding();
             }
         });
     }

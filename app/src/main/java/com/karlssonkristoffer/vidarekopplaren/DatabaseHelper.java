@@ -73,7 +73,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void setCurrentlyCallingFlag(boolean status) {
        SQLiteDatabase db = this.getWritableDatabase();
        int statusInt = status ? 1 : 0;
-        Log.d(TAG, " StatusInt i set: " + statusInt);
        String updateHasCalledTable = "UPDATE "
            + HAS_CALLED_TABLE
            + " SET "
@@ -92,8 +91,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (data.getCount() > 0) {
             data.moveToFirst();
             result = data.getInt(1) > 0;
-            Log.d(TAG, "Det som kommer ut i get: " + data.getInt(data.getColumnIndex(COL_1_HAS_CALLED_TABLE)));
-            Log.d(TAG, "Boolen i get " + String.valueOf(result));
         }
         return result;
     }

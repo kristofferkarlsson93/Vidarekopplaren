@@ -1,5 +1,6 @@
 package com.karlssonkristoffer.vidarekopplaren;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -22,16 +23,25 @@ public class PhoneOnlockedReciver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
-            Log.d("testKarlsson", "USER PRESENT");
             dbHelper = new DatabaseHelper(context);
             dbHelper.setCurrentlyCallingFlag(false);
-            NotificationCompat.Builder notification = new NotificationCompat.Builder(context);
-            notification.setContentTitle("Vidarekoppling avslutad");
-            notification.setContentText("Avslutad");
+            //sendNotification("Vidarekoppling avslutad");
             Intent resetIntent =  new Intent(context, MainActivity.class);
             context.startActivity(resetIntent);
             CallManager callManager = new CallManager(new ServiceProvider(context));
             callManager.stopForwarding();
         }
+    }
+
+    private void sendNotification(String message) {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(context)
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentTitle("Vidarekopplaren")
+                        .setContentText(message);
+
+        NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(005, mBuilder.build());
     }
 }
