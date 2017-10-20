@@ -64,7 +64,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/startbutton"
-        android:text="Lägg till"
+        android:text="@string/l_gg_till"
         android:textColor="#fff"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/phoneNumberListView"
@@ -94,7 +94,7 @@
         android:layout_marginRight="8dp"
         android:background="@drawable/startbutton"
         android:clickable="false"
-        android:text="Vidarekoppla"
+        android:text="@string/vidarekoppla"
         android:textColor="#fff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -103,8 +103,8 @@
 
     <ListView
         android:id="@+id/phoneNumberListView"
-        android:layout_width="335dp"
-        android:layout_height="109dp"
+        android:layout_width="349dp"
+        android:layout_height="93dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"

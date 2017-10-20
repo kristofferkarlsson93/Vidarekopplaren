@@ -737,14 +737,7 @@
                     "endOffset": 5314
                 },
                 "from": {
-                    "file": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\values\\colors.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 200,
-                        "endColumn": 44,
-                        "endOffset": 240
-                    }
+                    "file": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\values\\colors.xml"
                 }
             },
             {

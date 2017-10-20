@@ -103,8 +103,8 @@
 
     <ListView
         android:id="@+id/phoneNumberListView"
-        android:layout_width="335dp"
-        android:layout_height="109dp"
+        android:layout_width="349dp"
+        android:layout_height="93dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
