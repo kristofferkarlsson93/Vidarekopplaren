@@ -207,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             dbHelper.setCurrentlyCallingFlag(true);
+            dbHelper.setCurrentlyStopForwardingTime(stopTime);
             Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
             startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -222,8 +223,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void startNextActivity() {
         Intent startNextScreenIntent = new Intent(MainActivity.this, CurrentlyForwardingActivity.class);
-        startNextScreenIntent.putExtra(STOP_TIME_KEY, stopTime);
-        startNextScreenIntent.putExtra(SHOULD_STOP_FORWARDING, false);
         startActivity(startNextScreenIntent);
     }
 

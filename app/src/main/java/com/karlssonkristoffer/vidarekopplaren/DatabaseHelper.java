@@ -15,14 +15,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "databasehelper";
 
-    private static final int VERSION = 6;
+    private static final int VERSION = 9;
     private static final String PHONE_NUMBER_TABLE = "phone_numbers";
     private static final String HAS_CALLED_TABLE = "has_called";
+    private static final String FORWARD_END_TABLE = "forward_end_table";
     private static final String COL_0 = "ID";
     private static final String COL_1_PHONE_NUMBER_TABLE = "phoneNumber";
     private static final String COL_2_PHONE_NUMBER_TABLE = "timestamp";
     
     private static final String COL_1_HAS_CALLED_TABLE = "currentlyCalling";
+    private static final String COL_1_FORWARD_END_TABLE = "callEnds";
 
     public DatabaseHelper(Context context) {
         super(context, PHONE_NUMBER_TABLE, null, VERSION);
@@ -32,8 +34,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         createPhoneNumberTable(db);
         createHasCalledTable(db);
-
+        createForwardEndTable(db);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -42,8 +45,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String dropHasCalledTableIfExists = "DROP TABLE IF EXISTS "
                 + HAS_CALLED_TABLE;
 
+        String dropForwardEndTableIfExists = "DROP TABLE IF EXISTS "
+                + FORWARD_END_TABLE;
+
+
         db.execSQL(dropPhoneNumberTableIfExists);
         db.execSQL(dropHasCalledTableIfExists);
+        db.execSQL(dropForwardEndTableIfExists);
         onCreate(db);
     }
 
@@ -82,6 +90,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(updateHasCalledTable);
     }
 
+    public void setCurrentlyStopForwardingTime(String time) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String update = "UPDATE "
+                + FORWARD_END_TABLE
+                + " SET "
+                + COL_1_FORWARD_END_TABLE
+                + " = '"
+                + time
+                +"'";
+        db.execSQL(update);
+    }
+
     public boolean getCurrentlyCallingFlag() {
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result = false;
@@ -91,6 +111,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (data.getCount() > 0) {
             data.moveToFirst();
             result = data.getInt(1) > 0;
+        }
+        return result;
+    }
+
+    public String getCurrentlyStopForwardingTime() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String result = " ";
+        String getTimeString = "SELECT * FROM "
+                + FORWARD_END_TABLE;
+        Cursor data = db.rawQuery(getTimeString, null);
+        if (data.getCount() > 0) {
+            data.moveToFirst();
+            result = data.getString(1);
         }
         return result;
     }
@@ -121,6 +154,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL_1_HAS_CALLED_TABLE
                 +") VALUES (0)";
         db.execSQL(setStartValue);
+    }
 
+    private void createForwardEndTable(SQLiteDatabase db) {
+        String createForwardEndTable = "CREATE TABLE "
+                + FORWARD_END_TABLE
+                + " ("
+                + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_1_FORWARD_END_TABLE+ " TEXT"
+                + ")";
+        db.execSQL(createForwardEndTable);
+
+        String setStartValue = "INSERT INTO "
+                + FORWARD_END_TABLE
+                + " ("
+                + COL_1_FORWARD_END_TABLE
+                +") VALUES ('00:00')";
+        db.execSQL(setStartValue);
     }
 }

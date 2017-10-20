@@ -737,7 +737,14 @@
                     "endOffset": 5314
                 },
                 "from": {
-                    "file": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\values\\colors.xml"
+                    "file": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 200,
+                        "endColumn": 44,
+                        "endOffset": 240
+                    }
                 }
             },
             {
@@ -1529,14 +1536,7 @@
                     "endOffset": 9801
                 },
                 "from": {
-                    "file": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\values\\colors.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 246,
-                        "endColumn": 45,
-                        "endOffset": 287
-                    }
+                    "file": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\values\\colors.xml"
                 }
             },
             {

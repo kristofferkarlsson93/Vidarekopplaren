@@ -28,10 +28,7 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
             return;
         }
 
-        String stopTime = getIntent().getStringExtra(MainActivity.STOP_TIME_KEY);
-        boolean shouldStopForwarding = getIntent().getBooleanExtra(MainActivity.SHOULD_STOP_FORWARDING, true);
-        getIntent().removeExtra(MainActivity.SHOULD_STOP_FORWARDING);
-
+        String stopTime = dbHelper.getCurrentlyStopForwardingTime();
         KeyguardManager myKM = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
         if( myKM.inKeyguardRestrictedInputMode()) {
             PhoneOnlockedReciver reciver = new PhoneOnlockedReciver();

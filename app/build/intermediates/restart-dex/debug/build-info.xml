@@ -6,7 +6,7 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1508451451226"
+    timestamp="1508516241460"
     token="-5621567789481358885"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -25,8 +25,11 @@
 
     <build
         build-mode="FULL"
-        timestamp="1508450655946"
+        timestamp="1508515878558"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\outputs\apk\app-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
@@ -60,13 +63,10 @@
         <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
-        <artifact
-            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1508451268774"
+        timestamp="1508516198885"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\outputs\apk\app-debug.apk"
@@ -74,7 +74,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1508451451226"
+        timestamp="1508516241460"
         verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>
