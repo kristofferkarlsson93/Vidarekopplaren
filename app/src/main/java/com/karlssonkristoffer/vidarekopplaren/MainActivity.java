@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.icu.util.Calendar;
+import java.util.Calendar;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -55,10 +55,6 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         if(dbHelper.getCurrentlyCallingFlag()) {
             startNextActivity();
-        }
-        if (((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0)) {
-            finish();
-            return;
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -213,10 +209,11 @@ public class MainActivity extends AppCompatActivity {
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
             startNextActivity();
             callManager = new CallManager(MainActivity.this.serviceProvider);
             callManager.startForwarding();
+            //calendar.getTimeInMillis()
             }
         });
     }

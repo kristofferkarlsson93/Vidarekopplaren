@@ -51,6 +51,7 @@ public class CallManager {
     public void stopForwarding() {
         OperatorHolder op = new OperatorHolder(context);
         Intent cancelForwardIntent = new Intent(Intent.ACTION_CALL);
+        cancelForwardIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Uri uri = Uri.fromParts("tel",
                 PhoneNumber.getCancelNumberBasedOnOperator(op.getOperatorName()), "#");
         cancelForwardIntent.setData(uri);

@@ -29,12 +29,13 @@ public class ResetForwardingHandler extends BroadcastReceiver {
         if( keyguardManager.inKeyguardRestrictedInputMode()) {
             sendNotification("Avslutar vidarekoppling vid upplåsning", 001);
             Intent currentlyForwardingActivity = new Intent(context, CurrentlyForwardingActivity.class);
+            currentlyForwardingActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             currentlyForwardingActivity.putExtra(MainActivity.SHOULD_STOP_FORWARDING, true);
             context.startActivity(currentlyForwardingActivity);
         } else {
-            sendNotification("Avslutar vidarekoppling", 002);
             dbHelper.setCurrentlyCallingFlag(false);
-            Intent resetIntent =  new Intent(context, CurrentlyForwardingActivity.class);
+            Intent resetIntent =  new Intent(context, MainActivity.class);
+            resetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(resetIntent);
             CallManager callManager = new CallManager(new ServiceProvider(context));
             callManager.stopForwarding();

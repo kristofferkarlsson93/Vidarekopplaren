@@ -3403,17 +3403,19 @@ containing a value of this type.
         public static final int appbar_scrolling_view_behavior=0x7f070023;
         public static final int bottom_sheet_behavior=0x7f070024;
         public static final int character_counter_pattern=0x7f070025;
-        public static final int password_toggle_content_description=0x7f070026;
-        public static final int path_password_eye=0x7f070027;
-        public static final int path_password_eye_mask_strike_through=0x7f070028;
-        public static final int path_password_eye_mask_visible=0x7f070029;
-        public static final int path_password_strike_through=0x7f07002a;
+        public static final int l_gg_till=0x7f070026;
+        public static final int password_toggle_content_description=0x7f070027;
+        public static final int path_password_eye=0x7f070028;
+        public static final int path_password_eye_mask_strike_through=0x7f070029;
+        public static final int path_password_eye_mask_visible=0x7f07002a;
+        public static final int path_password_strike_through=0x7f07002b;
         public static final int search_menu_title=0x7f070013;
-        public static final int sluta_vidarekoppla=0x7f07002b;
+        public static final int sluta_vidarekoppla=0x7f07002c;
         public static final int status_bar_notification_info_overflow=0x7f070014;
-        public static final int stopp=0x7f07002c;
-        public static final int title_activity_currently_forwarding=0x7f07002d;
-        public static final int vidarekopplingen_slutar_klockan=0x7f07002e;
+        public static final int stopp=0x7f07002d;
+        public static final int title_activity_currently_forwarding=0x7f07002e;
+        public static final int vidarekoppla=0x7f07002f;
+        public static final int vidarekopplingen_slutar_klockan=0x7f070030;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a1;

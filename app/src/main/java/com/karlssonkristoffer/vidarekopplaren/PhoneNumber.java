@@ -8,7 +8,7 @@ public class PhoneNumber {
 
     public static final String TELIA_NUMBER = "**21*";
     public static final String TELE2_NUMBER = "*21*";
-    public static final String TELIA_CANCEL_NUMBER = "##002#";  //kanske ##21# istället??
+    public static final String TELIA_CANCEL_NUMBER = "##002#";
     public static final String TELE2_CANCEL_NUMBER = "#21";
 
     public static final String OPERATOR_TELIA = "Telia";

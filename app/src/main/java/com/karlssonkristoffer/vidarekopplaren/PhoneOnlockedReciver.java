@@ -25,11 +25,12 @@ public class PhoneOnlockedReciver extends BroadcastReceiver {
         if (intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
             dbHelper = new DatabaseHelper(context);
             dbHelper.setCurrentlyCallingFlag(false);
-            //sendNotification("Vidarekoppling avslutad");
             Intent resetIntent =  new Intent(context, MainActivity.class);
+            resetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(resetIntent);
             CallManager callManager = new CallManager(new ServiceProvider(context));
             callManager.stopForwarding();
+            context.unregisterReceiver(this);
         }
     }
 

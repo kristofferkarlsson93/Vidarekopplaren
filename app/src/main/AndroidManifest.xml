@@ -26,7 +26,7 @@
         <activity
             android:name=".CurrentlyForwardingActivity"
             android:label="@string/title_activity_currently_forwarding"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
