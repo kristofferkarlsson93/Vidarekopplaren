@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -56,8 +55,8 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
         PendingIntent stopCancelTimer;
         stopCancelTimer = PendingIntent.getBroadcast(this, MainActivity.CANCEL_INTENT_CODE, new Intent(this, ResetForwardingHandler.class), PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager.cancel(stopCancelTimer);
-        CallManager callManager = new CallManager(new ServiceProvider(this));
-        callManager.stopForwarding();
+        Forwarder forwarder = new Forwarder(this);
+        forwarder.stop();
         this.finish();
     }
 

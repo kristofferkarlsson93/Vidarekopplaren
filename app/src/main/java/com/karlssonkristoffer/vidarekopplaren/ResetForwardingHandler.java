@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 /**
  * Created by karls on 14/10/2017.
@@ -16,7 +15,7 @@ public class ResetForwardingHandler extends BroadcastReceiver {
     private static final int NOTIFICATION_ID = 1;
 
     private final String TAG =  "resetforwardingactivity";
-    private CallManager callManager;
+    private Forwarder forwarder;
     private DatabaseHelper dbHelper;
     private Context context;
 
@@ -37,8 +36,8 @@ public class ResetForwardingHandler extends BroadcastReceiver {
             Intent resetIntent =  new Intent(context, MainActivity.class);
             resetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(resetIntent);
-            CallManager callManager = new CallManager(new ServiceProvider(context));
-            callManager.stopForwarding();
+            Forwarder forwarder = new Forwarder(context);
+            forwarder.stop();
         }
     }
 

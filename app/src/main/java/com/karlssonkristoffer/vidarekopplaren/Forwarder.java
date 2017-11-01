@@ -23,44 +23,36 @@ import static com.karlssonkristoffer.vidarekopplaren.PermissionCodes.*;
  * Created by Kristoffer on 2017-09-18.
  */
 
-public class CallManager {
-    private static final String TAG = "callmanager";
+public class Forwarder {
 
+    private OperatorHolder operatorHolder;
     private Context context;
-    private PhoneNumber phoneNumber;
-    private ServiceProvider serviceProvider;
 
-    public CallManager(ServiceProvider serviceProvider) {
-        this.serviceProvider = serviceProvider;
-        this.phoneNumber = serviceProvider.getPhonenumberObject();
-        this.context = serviceProvider.getContext();
+    public Forwarder(Context context) {
+        this.context = context;
+        this.operatorHolder = new OperatorHolder(context);
     }
 
-    public void startForwarding() {
-
+    public void start(PhoneNumber phoneNumber) {
         Intent callForwardIntent = new Intent(Intent.ACTION_CALL);
-        Uri uri = Uri.parse("tel:" + Uri.encode(phoneNumber.getPhoneNumberWithForwardPrefix()));
-        callForwardIntent.setData(uri);
+        Uri forwardData = phoneNumber.getPhoneNumberWithForwardPrefix(operatorHolder.getOperatorName());
+        callForwardIntent.setData(forwardData);
 
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             context.startActivity(callForwardIntent);
         }
-
     }
 
-    public void stopForwarding() {
-        OperatorHolder op = new OperatorHolder(context);
+    public void stop() {
         Intent cancelForwardIntent = new Intent(Intent.ACTION_CALL);
         cancelForwardIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri uri = Uri.fromParts("tel",
-                PhoneNumber.getCancelNumberBasedOnOperator(op.getOperatorName()), "#");
-        cancelForwardIntent.setData(uri);
+        Uri cancelData = PhoneNumber.getCancelNumberBasedOnOperator(this.operatorHolder.getOperatorName());
+        cancelForwardIntent.setData(cancelData);
 
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             context.startActivity(cancelForwardIntent);
         }
-
-}
+    }
 
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {

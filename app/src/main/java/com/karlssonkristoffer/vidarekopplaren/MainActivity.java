@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -42,11 +41,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText newPhoneNumberText;
     private CircleAlarmTimerView timerView;
     private String stopTime;
-    private String currentPhoneNumber;
-    private CallManager callManager;
+    private PhoneNumber currentPhoneNumber;
+    private Forwarder forwarder;
     private ListView phoneNumberListView;
     private DatabaseHelper dbHelper;
-    private ServiceProvider serviceProvider;
     private Button startForwardingButton;
     private View prelClickedNumber;
 
@@ -66,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
         startForwardingButton = (Button) findViewById(R.id.startForwardingButton);
         startForwardingButton.setEnabled(false);
-        serviceProvider = new ServiceProvider(this);
         manageListView();
         manageInputField();
         manageTimer();
@@ -87,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     view.setBackgroundColor(0xCCA5FFCA);
-                    MainActivity.this.currentPhoneNumber = String.valueOf(parent.getItemAtPosition(position));
-                    serviceProvider.setPhoneNumber(currentPhoneNumber);
+                    MainActivity.this.currentPhoneNumber = new PhoneNumber(String.valueOf(parent.getItemAtPosition(position)));
                     startForwardingButton.setEnabled(true);
                     if(prelClickedNumber != null) {
                         prelClickedNumber.setBackgroundColor(0xFFffc5a5);
@@ -205,14 +201,13 @@ public class MainActivity extends AppCompatActivity {
             dbHelper.setCurrentlyCallingFlag(true);
             dbHelper.setCurrentlyStopForwardingTime(stopTime);
             Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
-            startTimerIntent.putExtra(PHONE_NUMBER_KEY, MainActivity.this.currentPhoneNumber);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
             startNextActivity();
-            callManager = new CallManager(MainActivity.this.serviceProvider);
-            callManager.startForwarding();
+            forwarder = new Forwarder(MainActivity.this);
+            forwarder.start(MainActivity.this.currentPhoneNumber);
             //calendar.getTimeInMillis()
             }
         });
