@@ -3,6 +3,7 @@ package com.karlssonkristoffer.vidarekopplaren;
 import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -24,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import com.yinglan.circleviewlibrary.CircleAlarmTimerView;
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHOULD_STOP_FORWARDING = "SHOULD_STOP_FORWARDING";
     public static final int CANCEL_INTENT_CODE = 100;
 
+    private TextView choseTimeText;
     private EditText newPhoneNumberText;
     private CircleAlarmTimerView timerView;
     private String stopTime;
@@ -61,13 +64,37 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[] {Manifest.permission.READ_PHONE_STATE}, PermissionCodes.PERMISSION_REQUEST_OPERATOR);
             requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, PermissionCodes.PERMISSION_CALL);
         }
-
         startForwardingButton = (Button) findViewById(R.id.startForwardingButton);
         startForwardingButton.setEnabled(false);
+
+        manageTimePickerDialog();
         manageListView();
         manageInputField();
         manageTimer();
         manageStartForwardingButton();
+    }
+
+    private void manageTimePickerDialog() {
+        final String oldTime = dbHelper.getLatestStopForwardingTime();
+        choseTimeText = (TextView) findViewById(R.id.choseTimeText);
+        choseTimeText.setText(oldTime);
+        choseTimeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hour = Integer.parseInt(oldTime.substring(0,2));
+                int minute = Integer.parseInt(oldTime.substring(3,5));
+                TimePickerDialog timePickerDialog = new TimePickerDialog(MainActivity.this, R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        String newTime = hourOfDay + ":" + minute;
+                        choseTimeText.setText(newTime);
+                        stopTime = newTime;
+                    }
+                }, hour, minute, true);
+                timePickerDialog.show();
+            }
+        });
     }
 
     private void manageListView() {
@@ -93,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         );
-
     }
 
     private void manageInputField() {
@@ -101,11 +127,10 @@ public class MainActivity extends AppCompatActivity {
         final Button addButton = (Button) findViewById(R.id.addButton);
         final FloatingActionButton addPhoneNumberButton = (FloatingActionButton) findViewById(R.id.addPhonenumberButton);
         addPhoneNumberButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 newPhoneNumberText.setVisibility(View.VISIBLE);
                 newPhoneNumberText.requestFocus();
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.showSoftInput(newPhoneNumberText, InputMethodManager.SHOW_IMPLICIT);
+                showKeyboard();
                 newPhoneNumberText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -124,8 +149,7 @@ public class MainActivity extends AppCompatActivity {
                             newPhoneNumberText.setVisibility(View.GONE);
                             View view = MainActivity.this.getCurrentFocus();
                             if (view != null) {
-                                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                                hideKeyboard(view);
                             }
                         } else {
                             addButton.setVisibility(View.VISIBLE);
@@ -153,8 +177,7 @@ public class MainActivity extends AppCompatActivity {
                             manageListView();
                             View view = MainActivity.this.getCurrentFocus();
                             if (view != null) {
-                                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                               hideKeyboard(view);
                             }
                         } else {
                             toastOut("Oväntat fel. Prova igen");
@@ -168,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void manageTimer() {
-        final TextView stopTimeText = (TextView) findViewById(R.id.stopTimeText);
+        /*final TextView stopTimeText = (TextView) findViewById(R.id.stopTimeText);
         timerView = (CircleAlarmTimerView) findViewById(R.id.circletimerview);
         timerView.setOnTimeChangedListener(new CircleAlarmTimerView.OnTimeChangedListener() {
             @Override
@@ -181,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.stopTime = ending;
                 stopTimeText.setText(ending);
             }
-        });
+        });*/
     }
 
     private void manageStartForwardingButton() {
@@ -199,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             dbHelper.setCurrentlyCallingFlag(true);
-            dbHelper.setCurrentlyStopForwardingTime(stopTime);
+            dbHelper.setStopForwardingTime(stopTime);
             Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -221,6 +244,16 @@ public class MainActivity extends AppCompatActivity {
     private String getPhoneNumberFromInput() {
         String text = newPhoneNumberText.getText().toString();
         return text;
+    }
+
+    private void showKeyboard() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.showSoftInput(newPhoneNumberText, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    private void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override

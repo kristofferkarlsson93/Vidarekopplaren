@@ -90,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(updateHasCalledTable);
     }
 
-    public void setCurrentlyStopForwardingTime(String time) {
+    public void setStopForwardingTime(String time) {
         SQLiteDatabase db = this.getWritableDatabase();
         String update = "UPDATE "
                 + FORWARD_END_TABLE
@@ -115,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public String getCurrentlyStopForwardingTime() {
+    public String getLatestStopForwardingTime() {
         SQLiteDatabase db = this.getWritableDatabase();
         String result = " ";
         String getTimeString = "SELECT * FROM "
