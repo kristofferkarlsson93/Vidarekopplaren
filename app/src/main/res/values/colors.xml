@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="background">#ffc5a5</color>
-    <color name="startbutton">#a5ffca</color>
+    <color name="startbutton">#70ffaa</color>
     <color name="stopbutton">#ffa5c0</color>
 
     <color name="currentlyForwardingbackground">#000</color>
@@ -20,4 +20,9 @@
 <color name="background">#83C7EC</color>
 <color name="startbutton">#5DFDCB</color>
 <color name="stopbutton">#D496A7</color>
+
+
+ <color name="startbuttonstart">#a5ffca</color>
+    <color name="startbuttonmiddle">#bfffd9</color>
+    <color name="startbuttonstop">#70ffaa</color>
 -->

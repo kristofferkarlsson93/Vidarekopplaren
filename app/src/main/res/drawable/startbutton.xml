@@ -7,3 +7,14 @@
         android:topRightRadius="36dp"
         android:topLeftRadius="36dp"/>
 </shape>
+
+
+
+<!--
+<gradient
+        android:startColor="@color/startbuttonstart"
+        android:centerColor="@color/startbuttonmiddle"
+        android:endColor="@color/startbuttonstop"
+        android:gradientRadius="0"
+        android:type="radial"/>
+-->

@@ -51,7 +51,7 @@ MERGED from [com.android.support:support-compat:25.3.0] C:\Users\karls\.android\
 	android:icon
 		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:11:9-43
 	android:theme
-		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:15:9-40
+		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:15:9-59
 activity#com.karlssonkristoffer.vidarekopplaren.MainActivity
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:16:9-22:20
 	android:name

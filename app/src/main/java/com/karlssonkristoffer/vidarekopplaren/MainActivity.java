@@ -14,9 +14,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "mainactivity";
 
-    public static final String PHONE_NUMBER_KEY = "PHONE_NUMBER_KEY";
-    public static final String STOP_TIME_KEY = "STOP_TIME_KEY";
     public static final String SHOULD_STOP_FORWARDING = "SHOULD_STOP_FORWARDING";
     public static final int CANCEL_INTENT_CODE = 100;
 
@@ -54,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dbHelper = new DatabaseHelper(this);
+
         if(dbHelper.getCurrentlyCallingFlag()) {
             startNextActivity();
         }
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -75,21 +80,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void manageTimePickerDialog() {
-        final String oldTime = dbHelper.getLatestStopForwardingTime();
+        stopTime = dbHelper.getLatestStopForwardingTime();
         choseTimeText = (TextView) findViewById(R.id.choseTimeText);
-        choseTimeText.setText(oldTime);
+        choseTimeText.setText(stopTime);
         choseTimeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int hour = Integer.parseInt(oldTime.substring(0,2));
-                int minute = Integer.parseInt(oldTime.substring(3,5));
-                TimePickerDialog timePickerDialog = new TimePickerDialog(MainActivity.this, R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
+                Log.d("testKarlsson", stopTime.substring(3,5));
+                int hour = Integer.parseInt(stopTime.substring(0, 2));
+                int minute = Integer.parseInt(stopTime.substring(3, 5));
+                final TimePickerDialog timePickerDialog = new TimePickerDialog(MainActivity.this, R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
 
                     @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String newTime = hourOfDay + ":" + minute;
-                        choseTimeText.setText(newTime);
-                        stopTime = newTime;
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minuteOfHour) {
+                        stopTime = hourOfDay + ":" + minuteOfHour;
+                        choseTimeText.setText(stopTime);
                     }
                 }, hour, minute, true);
                 timePickerDialog.show();
@@ -110,11 +115,11 @@ public class MainActivity extends AppCompatActivity {
             new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    view.setBackgroundColor(0xCCA5FFCA);
+                    view.setBackgroundColor(0xCC70ffaa);
                     MainActivity.this.currentPhoneNumber = new PhoneNumber(String.valueOf(parent.getItemAtPosition(position)));
                     startForwardingButton.setEnabled(true);
-                    if(prelClickedNumber != null) {
-                        prelClickedNumber.setBackgroundColor(0xFFffc5a5);
+                    if(prelClickedNumber != null && prelClickedNumber != view) {
+                        prelClickedNumber.setBackgroundColor(0x00000000);
                     }
                     prelClickedNumber = view;
                 }
@@ -227,8 +232,11 @@ public class MainActivity extends AppCompatActivity {
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10000, pendingIntent);
             startNextActivity();
+            TelephonyManager manager;
+            manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+            manager.listen(MyPhoneStateListener.getInstance(), PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
             forwarder = new Forwarder(MainActivity.this);
             forwarder.start(MainActivity.this.currentPhoneNumber);
             //calendar.getTimeInMillis()

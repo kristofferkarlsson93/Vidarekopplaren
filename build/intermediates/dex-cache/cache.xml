@@ -97,7 +97,7 @@
         jumboMode="false"
         optimize="true"
         revision="26.0.2"
-        sha1="5a3998ec1e5d522afde024b01f4f4391c5054c05">
+        sha1="925b72d1b8e8165898758c638aae2ab393e69d00">
         <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\pre-dexed\debug\classes_77005098373b196b10047a68f933a865342658d8.jar" />
     </item>
     <item
@@ -106,7 +106,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="ab436f94d2a757b75ea946f5e6f7bd02071248b2">
+        sha1="8d075965c906cea002d3acdf2db4ffc163af8e59">
         <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8fa12710152c23742145037f3e937d5de3ad7c19\classes.dex" />
     </item>
     <item

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.telephony.PhoneStateListener;
 import android.util.Log;
 
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class Forwarder {
     public Forwarder(Context context) {
         this.context = context;
         this.operatorHolder = new OperatorHolder(context);
+        Log.d("testKarlsson", "kapapappa");
     }
 
     public void start(PhoneNumber phoneNumber) {
