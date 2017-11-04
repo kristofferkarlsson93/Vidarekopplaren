@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Nov 04 15:10:27 CET 2017
+#Sat Nov 04 15:26:54 CET 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_media_custom.xml

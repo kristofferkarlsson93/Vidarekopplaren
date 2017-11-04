@@ -34,9 +34,9 @@ public class ResetForwardingHandler extends BroadcastReceiver {
             dbHelper.setCurrentlyCallingFlag(false);
             Intent resetIntent =  new Intent(context, MainActivity.class);
             resetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(resetIntent);
             Forwarder forwarder = new Forwarder(context);
             forwarder.stop();
+            context.startActivity(resetIntent); //Flytta eventuellt upp innan forwarding.
         }
     }
 

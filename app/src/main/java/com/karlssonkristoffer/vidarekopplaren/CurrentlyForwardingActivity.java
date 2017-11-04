@@ -21,7 +21,6 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dbHelper = new DatabaseHelper(this);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currently_forwarding);
         if(!this.dbHelper.getCurrentlyCallingFlag()) {
