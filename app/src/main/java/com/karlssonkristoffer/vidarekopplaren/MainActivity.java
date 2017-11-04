@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import java.util.Calendar;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -21,10 +22,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "mainactivity";
 
-    public static final String SHOULD_STOP_FORWARDING = "SHOULD_STOP_FORWARDING";
     public static final int CANCEL_INTENT_CODE = 100;
 
     private TextView choseTimeText;
@@ -49,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private String stopTime;
     private PhoneNumber currentPhoneNumber;
     private Forwarder forwarder;
-    private ListView phoneNumberListView;
     private DatabaseHelper dbHelper;
     private Button startForwardingButton;
     private View prelClickedNumber;
@@ -70,31 +67,48 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, PermissionCodes.PERMISSION_CALL);
         }
         startForwardingButton = (Button) findViewById(R.id.startForwardingButton);
-        startForwardingButton.setEnabled(false);
 
         manageTimePickerDialog();
         manageListView();
         manageInputField();
-        manageTimer();
         manageStartForwardingButton();
     }
 
     private void manageTimePickerDialog() {
         stopTime = dbHelper.getLatestStopForwardingTime();
+        int hour = Integer.parseInt(stopTime.substring(0, 2));
+        int minute = Integer.parseInt(stopTime.substring(3, 5));
         choseTimeText = (TextView) findViewById(R.id.choseTimeText);
         choseTimeText.setText(stopTime);
-        choseTimeText.setOnClickListener(new View.OnClickListener() {
+        Calendar calendar = getCalendar(hour, minute);
+        if (hasSetCorrectTime(calendar)) {
+           setSucessOnTime();
+        } else {
+            clearTimeColors();
+        }
+        View circle = (View) findViewById(R.id.circle);
+        circle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("testKarlsson", stopTime.substring(3,5));
+                clearTimeColors();
+                final Calendar calendar = Calendar.getInstance();
                 int hour = Integer.parseInt(stopTime.substring(0, 2));
                 int minute = Integer.parseInt(stopTime.substring(3, 5));
                 final TimePickerDialog timePickerDialog = new TimePickerDialog(MainActivity.this, R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
 
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minuteOfHour) {
-                        stopTime = hourOfDay + ":" + minuteOfHour;
+                        stopTime = String.format("%02d", hourOfDay) + ":" + String.format("%02d", minuteOfHour);
                         choseTimeText.setText(stopTime);
+                        calendar.setTimeInMillis(System.currentTimeMillis());
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        calendar.set(Calendar.MINUTE, minuteOfHour);
+                        if(hasSetCorrectTime(calendar)) {
+                            setSucessOnTime();
+                        } else {
+                            toastOut("Välj en tid i framtiden");
+                            setErrorOnTime();
+                        }
                     }
                 }, hour, minute, true);
                 timePickerDialog.show();
@@ -103,13 +117,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void manageListView() {
-        phoneNumberListView = (ListView) findViewById(R.id.phoneNumberListView);
+        ListView phoneNumberListView = (ListView) findViewById(R.id.phoneNumberListView);
         Cursor data = dbHelper.getAllPhoneNumbers();
         ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
             listData.add(data.getString(1));
         }
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+        ListAdapter adapter = new PhoneNumberAdapter(this, listData);
         phoneNumberListView.setAdapter(adapter);
         phoneNumberListView.setOnItemClickListener(
             new AdapterView.OnItemClickListener() {
@@ -117,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     view.setBackgroundColor(0xCC70ffaa);
                     MainActivity.this.currentPhoneNumber = new PhoneNumber(String.valueOf(parent.getItemAtPosition(position)));
-                    startForwardingButton.setEnabled(true);
                     if(prelClickedNumber != null && prelClickedNumber != view) {
                         prelClickedNumber.setBackgroundColor(0x00000000);
                     }
@@ -195,37 +208,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void manageTimer() {
-        /*final TextView stopTimeText = (TextView) findViewById(R.id.stopTimeText);
-        timerView = (CircleAlarmTimerView) findViewById(R.id.circletimerview);
-        timerView.setOnTimeChangedListener(new CircleAlarmTimerView.OnTimeChangedListener() {
-            @Override
-            public void start(String starting) {
-
-            }
-
-            @Override
-            public void end(String ending) {
-                MainActivity.this.stopTime = ending;
-                stopTimeText.setText(ending);
-            }
-        });*/
-    }
-
     private void manageStartForwardingButton() {
         startForwardingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             int hour = Integer.parseInt(stopTime.substring(0,2));
             int minute = Integer.parseInt(stopTime.substring(3,5));
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.set(Calendar.HOUR_OF_DAY, hour);
-            calendar.set(Calendar.MINUTE, minute);
-            calendar.set(Calendar.SECOND, 0);
-            if(calendar.getTimeInMillis() <= System.currentTimeMillis()) {
-                toastOut("Välj en tid i framtiden");
-                return;
-            }
+            Calendar calendar = getCalendar(hour, minute);
+           if(checkForErrorsBeforeForwarding(calendar)) {
+               return;
+           }
             dbHelper.setCurrentlyCallingFlag(true);
             dbHelper.setStopForwardingTime(stopTime);
             Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
@@ -262,6 +253,62 @@ public class MainActivity extends AppCompatActivity {
     private void hideKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private boolean checkForErrorsBeforeForwarding(Calendar calendar) {
+        if (!hasChosenPhoneNumber()) {
+            toastOut("Välj ett telefonnummer");
+            return true;
+        } else if(!hasSetCorrectTime(calendar)) {
+            toastOut("Ange en tid i framtiden");
+            setErrorOnTime();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean hasChosenPhoneNumber() {
+        if (this.currentPhoneNumber != null) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean hasSetCorrectTime(Calendar calendar) {
+        if(calendar.getTimeInMillis() > System.currentTimeMillis() + 60000) { // + 1 min
+            return true;
+        }
+        return false;
+    }
+
+    private void setErrorOnTime() {
+        View circleView = (View) findViewById(R.id.circle);
+        GradientDrawable circle = (GradientDrawable)circleView.getBackground();
+        circle.setStroke(2, Color.RED);
+        choseTimeText.setTextColor(Color.RED);
+    }
+
+    private void clearTimeColors() {
+        View circleView = (View) findViewById(R.id.circle);
+        GradientDrawable circle = (GradientDrawable)circleView.getBackground();
+        circle.setStroke(2, Color.WHITE);
+        choseTimeText.setTextColor(Color.WHITE);
+    }
+
+    private void setSucessOnTime() {
+        View circleView = (View) findViewById(R.id.circle);
+        GradientDrawable circle = (GradientDrawable)circleView.getBackground();
+        circle.setStroke(2, 0xFF70ffaa);
+        choseTimeText.setTextColor(0xFF70ffaa);
+    }
+
+    private Calendar getCalendar(int hour, int minute) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
     }
 
     @Override

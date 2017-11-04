@@ -29,7 +29,6 @@ public class ResetForwardingHandler extends BroadcastReceiver {
             sendNotification("Avslutar vidarekoppling vid upplåsning", 001);
             Intent currentlyForwardingActivity = new Intent(context, CurrentlyForwardingActivity.class);
             currentlyForwardingActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            currentlyForwardingActivity.putExtra(MainActivity.SHOULD_STOP_FORWARDING, true);
             context.startActivity(currentlyForwardingActivity);
         } else {
             dbHelper.setCurrentlyCallingFlag(false);

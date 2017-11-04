@@ -12,6 +12,10 @@
         "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
+        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\phonenumberrow.xml",
+        "source": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\layout\\phonenumberrow.xml"
+    },
+    {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
         "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
