@@ -6,42 +6,33 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1509898768459"
+    timestamp="1509916920662"
     token="-5621567789481358885"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="886" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="83" />
+        duration="0" />
     <task
         name="verifier"
-        duration="30" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-        type="SPLIT" />
+        location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\outputs\apk\app-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1509897186393"
+        timestamp="1509915358110"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\outputs\apk\app-debug.apk"
@@ -53,10 +44,19 @@
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
@@ -70,19 +70,28 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1509898104536"
+        timestamp="1509916737510"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1509916920662"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1509898768459"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
     </build>
 
 </instant-run>

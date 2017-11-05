@@ -100,6 +100,10 @@
         "source": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\drawable\\blue.png"
     },
     {
+        "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\infosign.png",
+        "source": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\src\\main\\res\\drawable\\infosign.png"
+    },
+    {
         "merged": "C:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
         "source": "C:\\Users\\karls\\.android\\build-cache\\f87d59d8d2a6a0ad68aa176c2b2a56d08591cc9b\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },

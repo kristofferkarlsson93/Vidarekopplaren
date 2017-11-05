@@ -46,8 +46,8 @@
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="89dp"
+        android:layout_height="39dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="8dp"
@@ -75,7 +75,7 @@
         android:textColor="#fff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintTop_toBottomOf="@+id/circle" />
 
     <ListView
@@ -97,13 +97,13 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="22dp"
         android:text="Sätt sluttid"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberListView"
-        app:layout_constraintHorizontal_bias="0.498" />
+        app:layout_constraintHorizontal_bias="0.502" />
 
     <TextView
         android:id="@+id/choseTimeText"
@@ -134,5 +134,18 @@
         app:layout_constraintHorizontal_bias="0.497"
         android:layout_marginTop="39dp"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/infoSign"
+        android:layout_width="32dp"
+        android:layout_height="37dp"
+        app:srcCompat="@drawable/infosign"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="26dp" />
 
 </android.support.constraint.ConstraintLayout>

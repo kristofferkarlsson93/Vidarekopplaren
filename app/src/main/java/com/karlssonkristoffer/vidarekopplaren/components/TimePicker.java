@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
 import com.karlssonkristoffer.vidarekopplaren.R;
+import com.karlssonkristoffer.vidarekopplaren.Utils;
 
 import java.util.Calendar;
 
@@ -66,7 +67,7 @@ public class TimePicker {
                         if(hasSetCorrectTime(calendar.getTimeInMillis())) {
                             setSucessOnTime();
                         } else {
-                            toastOut("Välj en tid i framtiden");
+                            Utils.toastOut(context, "Välj en tid i framtiden");
                             setErrorOnTime();
                         }
                     }
@@ -115,9 +116,4 @@ public class TimePicker {
     public boolean hasSetCorrectTime(long chosenTime) {
         return chosenTime > System.currentTimeMillis() + 60000;
     }
-
-    private void toastOut(String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-    }
-
 }

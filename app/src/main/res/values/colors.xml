@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000</color>
-    <color name="colorPrimaryDark">#000</color>
+    <color name="colorPrimary">#fff</color>
+    <color name="colorPrimaryDark">#fff</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="background">#ffc5a5</color>
     <color name="startbutton">#70ffaa</color>
-    <color name="stopbutton">#ffa5c0</color>
+    <color name="stopbutton">#FF729F</color>
 
     <color name="currentlyForwardingbackground">#000</color>
     <color name="markedItemBackgroundColor">#000</color>
 
     <color name="white">#fff</color>
+
+    <color name="blue">#3acdff</color>
 
 </resources>
 
@@ -20,6 +22,7 @@
 <color name="background">#83C7EC</color>
 <color name="startbutton">#5DFDCB</color>
 <color name="stopbutton">#D496A7</color>
+#ffa5c0
 
 
  <color name="startbuttonstart">#a5ffca</color>
