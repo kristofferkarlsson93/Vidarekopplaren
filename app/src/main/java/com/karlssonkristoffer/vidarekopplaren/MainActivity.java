@@ -2,31 +2,25 @@ package com.karlssonkristoffer.vidarekopplaren;
 
 import android.Manifest;
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import java.util.Calendar;
-import android.graphics.drawable.GradientDrawable;
+
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +28,6 @@ import android.widget.Toast;
 import com.karlssonkristoffer.vidarekopplaren.components.PhoneNumberList;
 import com.yinglan.circleviewlibrary.CircleAlarmTimerView;
 import com.karlssonkristoffer.vidarekopplaren.components.TimePicker;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,11 +51,13 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
 
         if(dbHelper.getCurrentlyCallingFlag()) {
-            startNextActivity();
+            startStatusForwardingActivity();
         }
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        cancelPosibleNotifications();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[] {Manifest.permission.READ_PHONE_STATE}, PermissionCodes.PERMISSION_REQUEST_OPERATOR);
@@ -167,18 +161,18 @@ public class MainActivity extends AppCompatActivity {
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10000, pendingIntent);
-            startNextActivity();
-            TelephonyManager manager;
-            manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-            manager.listen(MyPhoneStateListener.getInstance(), PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 15000, pendingIntent);
+            startStatusForwardingActivity();
+            //TelephonyManager manager;
+            //manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+            //manager.listen(MyPhoneStateListener.getInstance(), PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
             forwarder = new Forwarder(MainActivity.this);
             forwarder.start(MainActivity.this.phoneNumberList.getCurrentPhoneNumber());
             }
         });
     }
 
-    private void startNextActivity() {
+    private void startStatusForwardingActivity() {
         Intent startNextScreenIntent = new Intent(MainActivity.this, CurrentlyForwardingActivity.class);
         startActivity(startNextScreenIntent);
     }
@@ -209,17 +203,6 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-
-
-    private Calendar getCalendar(int hour, int minute) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, 0);
-        return calendar;
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -227,5 +210,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void toastOut(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    private void cancelPosibleNotifications() {
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancelAll();
     }
 }

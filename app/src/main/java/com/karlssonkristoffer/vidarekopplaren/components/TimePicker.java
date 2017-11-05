@@ -26,6 +26,7 @@ public class TimePicker {
     private TextView choseTimeText;
     private View circleView;
     private long chosenTimeInMilis = 0;
+    private Calendar calendar;
 
     public TimePicker(Context context, DatabaseHelper dbHelper, TextView choseTimeText, View circleView) {
         this.context = context;
@@ -40,7 +41,7 @@ public class TimePicker {
         int hour = Integer.parseInt(stopTime.substring(0, 2));
         int minute = Integer.parseInt(stopTime.substring(3, 5));
         choseTimeText.setText(stopTime);
-        Calendar calendar =  getNewCalendar(hour, minute);
+        calendar =  getNewCalendar(hour, minute);
         if (hasSetCorrectTime(calendar.getTimeInMillis())) {
             setSucessOnTime();
         } else {
@@ -50,7 +51,6 @@ public class TimePicker {
             @Override
             public void onClick(View v) {
                 clearTimeColors();
-                final Calendar calendar = Calendar.getInstance();
                 int hour = Integer.parseInt(stopTime.substring(0, 2));
                 int minute = Integer.parseInt(stopTime.substring(3, 5));
                 final TimePickerDialog timePickerDialog = new TimePickerDialog(context, R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
@@ -62,8 +62,8 @@ public class TimePicker {
                         calendar.setTimeInMillis(System.currentTimeMillis());
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minuteOfHour);
-                        chosenTimeInMilis = calendar.getTimeInMillis();
-                        if(hasSetCorrectTime(chosenTimeInMilis)) {
+
+                        if(hasSetCorrectTime(calendar.getTimeInMillis())) {
                             setSucessOnTime();
                         } else {
                             toastOut("Välj en tid i framtiden");
@@ -81,7 +81,7 @@ public class TimePicker {
     }
 
     public long getChosenTimeInMilis() {
-        return chosenTimeInMilis;
+        return calendar.getTimeInMillis();
     }
 
     private Calendar getNewCalendar(int hour, int minute) {

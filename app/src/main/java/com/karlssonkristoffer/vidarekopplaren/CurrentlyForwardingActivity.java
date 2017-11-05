@@ -21,12 +21,12 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dbHelper = new DatabaseHelper(this);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_currently_forwarding);
         if(!this.dbHelper.getCurrentlyCallingFlag()) {
             finish();
             return;
         }
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_currently_forwarding);
 
         String stopTime = dbHelper.getLatestStopForwardingTime();
         KeyguardManager myKM = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
@@ -36,6 +36,7 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
             filter.addAction(Intent.ACTION_USER_PRESENT);
             filter.addAction(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
+            reciver.nothing();
             registerReceiver(reciver, filter);
         }
         TextView forwardStopTime = (TextView) findViewById(R.id.forwardStopTime);
