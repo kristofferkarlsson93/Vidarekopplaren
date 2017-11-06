@@ -7,24 +7,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by karls on 16/10/2017.
- */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "databasehelper";
 
-    private static final int VERSION = 9;
+    private static final int VERSION = 10;
     private static final String PHONE_NUMBER_TABLE = "phone_numbers";
     private static final String HAS_CALLED_TABLE = "has_called";
     private static final String FORWARD_END_TABLE = "forward_end_table";
+    private static final String SHOULD_KILL_FORWARDING_TABLE = "should_kill_forwarding_table";
     private static final String COL_0 = "ID";
     private static final String COL_1_PHONE_NUMBER_TABLE = "phoneNumber";
     private static final String COL_2_PHONE_NUMBER_TABLE = "timestamp";
     
     private static final String COL_1_HAS_CALLED_TABLE = "currentlyCalling";
     private static final String COL_1_FORWARD_END_TABLE = "callEnds";
+    private static final String COL_1_SHOULD_KILL_FORWARDING_TABLE = "ShouldKillForwarding";
 
     public DatabaseHelper(Context context) {
         super(context, PHONE_NUMBER_TABLE, null, VERSION);
@@ -35,8 +34,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         createPhoneNumberTable(db);
         createHasCalledTable(db);
         createForwardEndTable(db);
+        createShouldKillForwardingTable(db);
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -44,16 +43,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + PHONE_NUMBER_TABLE;
         String dropHasCalledTableIfExists = "DROP TABLE IF EXISTS "
                 + HAS_CALLED_TABLE;
-
         String dropForwardEndTableIfExists = "DROP TABLE IF EXISTS "
                 + FORWARD_END_TABLE;
-
+        String dropShouldKillForwardingTable = "DROP TABLE IF EXISTS "
+                + SHOULD_KILL_FORWARDING_TABLE;
 
         db.execSQL(dropPhoneNumberTableIfExists);
         db.execSQL(dropHasCalledTableIfExists);
         db.execSQL(dropForwardEndTableIfExists);
+        db.execSQL(dropShouldKillForwardingTable);
         onCreate(db);
     }
+
 
     public Cursor getAllPhoneNumbers() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -128,6 +129,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public void setShouldKillForwarding(boolean shouldKillForwarding) {
+        int statusInt = shouldKillForwarding ? 1 : 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String update = "UPDATE "
+                + SHOULD_KILL_FORWARDING_TABLE
+                + " SET "
+                + COL_1_SHOULD_KILL_FORWARDING_TABLE
+                + " = '"
+                + statusInt
+                + "'";
+
+        db.execSQL(update);
+    }
+
+    public boolean getShouldKillForwarding() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String getFlag = "SELECT * FROM "
+                + SHOULD_KILL_FORWARDING_TABLE;
+        Cursor data = db.rawQuery(getFlag, null);
+        if (data.getCount() > 0) {
+            data.moveToFirst();
+            result = data.getInt(1) > 0;
+        }
+        return result;
+    }
+
+
+    private void createShouldKillForwardingTable(SQLiteDatabase db) {
+        String createShouldKillForwardingTable = "CREATE TABLE "
+            + SHOULD_KILL_FORWARDING_TABLE
+            + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COL_1_SHOULD_KILL_FORWARDING_TABLE
+            + " INTEGER)";
+        db.execSQL(createShouldKillForwardingTable);
+
+        String setStartValue = "INSERT INTO "
+            + SHOULD_KILL_FORWARDING_TABLE
+            + " ("
+            + COL_1_SHOULD_KILL_FORWARDING_TABLE
+            + ") VALUES (0)";
+        db.execSQL(setStartValue);
+    }
 
     private void createPhoneNumberTable(SQLiteDatabase db) {
         String createPhoneNumberTable = "CREATE TABLE "
@@ -155,21 +199,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 +") VALUES (0)";
         db.execSQL(setStartValue);
     }
-
     private void createForwardEndTable(SQLiteDatabase db) {
         String createForwardEndTable = "CREATE TABLE "
-                + FORWARD_END_TABLE
-                + " ("
-                + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COL_1_FORWARD_END_TABLE+ " TEXT"
-                + ")";
+        + FORWARD_END_TABLE
+        + " ("
+        + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+        + COL_1_FORWARD_END_TABLE+ " TEXT"
+        + ")";
         db.execSQL(createForwardEndTable);
 
         String setStartValue = "INSERT INTO "
-                + FORWARD_END_TABLE
-                + " ("
-                + COL_1_FORWARD_END_TABLE
-                +") VALUES ('00:00')";
+        + FORWARD_END_TABLE
+        + " ("
+        + COL_1_FORWARD_END_TABLE
+        +") VALUES ('00:00')";
         db.execSQL(setStartValue);
     }
+
 }

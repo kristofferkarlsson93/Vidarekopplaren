@@ -33,9 +33,12 @@ public class ResetForwardingHandler extends BroadcastReceiver {
             context.startActivity(currentlyForwardingActivity);
         } else {
             dbHelper.setCurrentlyCallingFlag(false);
-            Forwarder forwarder = new Forwarder(context);
+            dbHelper.setShouldKillForwarding(true);
+            Intent resetIntent =  new Intent(context, MainActivity.class);
+            resetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(resetIntent);
+            /*Forwarder forwarder = new Forwarder(context);
             forwarder.stop();
-
             final PendingResult result = goAsync();
             Thread thread = new Thread() {
                 public void run() {
@@ -48,7 +51,7 @@ public class ResetForwardingHandler extends BroadcastReceiver {
                     result.finish();
                 }
             };
-            thread.start();
+            thread.start();*/
         }
     }
 

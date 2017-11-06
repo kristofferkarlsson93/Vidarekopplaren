@@ -63,6 +63,7 @@ public class TimePicker {
                         calendar.setTimeInMillis(System.currentTimeMillis());
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minuteOfHour);
+                        calendar.set(Calendar.SECOND, 0);
 
                         if(hasSetCorrectTime(calendar.getTimeInMillis())) {
                             setSucessOnTime();
@@ -94,7 +95,6 @@ public class TimePicker {
         return calendar;
     }
 
-
     public void setErrorOnTime() {
         GradientDrawable circle = (GradientDrawable)circleView.getBackground();
         circle.setStroke(2, Color.RED);
@@ -114,6 +114,6 @@ public class TimePicker {
     }
 
     public boolean hasSetCorrectTime(long chosenTime) {
-        return chosenTime > System.currentTimeMillis() + 60000;
+        return chosenTime > System.currentTimeMillis() + 45000;
     }
 }

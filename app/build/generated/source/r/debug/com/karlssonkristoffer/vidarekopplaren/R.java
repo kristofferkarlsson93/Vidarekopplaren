@@ -3723,11 +3723,6 @@ containing a value of this type.
         public static final int ThemeOverlay_AppCompat_Dialog=0x7f09012b;
         public static final int ThemeOverlay_AppCompat_Dialog_Alert=0x7f09012c;
         public static final int ThemeOverlay_AppCompat_Light=0x7f09012d;
-        /** 
-    <item name="android:textColorPrimary">#3acdff</item>
-    <item name="android:textColorSecondary">#3acdff</item>
-    
-         */
         public static final int TimePickerTheme=0x7f09012e;
         public static final int Widget_AppCompat_ActionBar=0x7f09012f;
         public static final int Widget_AppCompat_ActionBar_Solid=0x7f090130;
