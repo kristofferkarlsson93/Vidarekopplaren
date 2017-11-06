@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.karlssonkristoffer.vidarekopplaren.ResetForwardingHandler" />
+        <receiver android:name="com.karlssonkristoffer.vidarekopplaren.ResetForwardingReceiver" />
 
         <activity
             android:name="com.karlssonkristoffer.vidarekopplaren.CurrentlyForwardingActivity"

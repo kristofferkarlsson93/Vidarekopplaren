@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ResetForwardingHandler" />
+        <receiver android:name=".ResetForwardingReceiver" />
 
         <activity
             android:name=".CurrentlyForwardingActivity"

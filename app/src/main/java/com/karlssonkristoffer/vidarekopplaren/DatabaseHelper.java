@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public void setCurrentlyCallingFlag(boolean status) {
+    public void setCurrentlyForwardingFlag(boolean status) {
        SQLiteDatabase db = this.getWritableDatabase();
        int statusInt = status ? 1 : 0;
        String updateHasCalledTable = "UPDATE "

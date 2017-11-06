@@ -15,7 +15,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ContextThemeWrapper;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -100,9 +99,9 @@ public class MainActivity extends AppCompatActivity {
            if(checkForErrorsBeforeForwarding(timePicker.getChosenTimeInMilis())) {
                return;
            }
-            dbHelper.setCurrentlyCallingFlag(true);
+            dbHelper.setCurrentlyForwardingFlag(true);
             dbHelper.setStopForwardingTime(timePicker.getStopTime());
-            Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingHandler.class);
+            Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
