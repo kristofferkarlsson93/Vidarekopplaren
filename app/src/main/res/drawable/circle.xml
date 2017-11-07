@@ -9,3 +9,5 @@
         android:width="2dp"
         android:color="#fff" />
 </shape>
+
+<!--https://stackoverflow.com/questions/5197892/add-shadow-to-custom-shape-on-android-->

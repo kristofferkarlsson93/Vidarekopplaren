@@ -163,7 +163,11 @@ public class MainActivity extends AppCompatActivity {
             builder = new AlertDialog.Builder(this);
         }
         builder.setTitle("Information")
-                .setMessage("Denna app fungerar enbart på telefoner där vidarekoppling är tillåten")
+                .setMessage(
+                    "Denna app fungerar enbart på telefoner där vidarekoppling är tillåten. \n \n" +
+                "Välj telefonnummer att vidarekoppla till och tid för att avsluta vidarekoppling. \n \n" +
+                "Notera att om telefonen är låst när vald tid inträffar kommer vidarekopplingen" +
+                " att avslutas när du låser upp telefonen nästa gång.")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }
