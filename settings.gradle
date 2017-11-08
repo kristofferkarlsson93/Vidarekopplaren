@@ -1,1 +1,1 @@
-include ':app', 'subProject:circleviewlibrary'
+include ':app'

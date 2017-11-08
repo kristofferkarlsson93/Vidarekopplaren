@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         cancelPosibleNotifications();
 
         if(isFirstTime()) {
-            showInstruction();
+            showInstructions();
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -155,33 +155,20 @@ public class MainActivity extends AppCompatActivity {
         manager.cancelAll();
     }
 
-    private void showInstruction() {
-        final AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.InformationDialog));
-        } else {
-            builder = new AlertDialog.Builder(this);
-        }
-        builder.setTitle("Information")
-                .setMessage(
-                    "Denna app fungerar enbart på telefoner där vidarekoppling är tillåten. \n \n" +
-                "Välj telefonnummer att vidarekoppla till och tid för att avsluta vidarekoppling. \n \n" +
-                "Notera att om telefonen är låst när vald tid inträffar kommer vidarekopplingen" +
-                " att avslutas när du låser upp telefonen nästa gång.")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .show();
-    }
+
+
 
     private void manageInfoSign() {
         ImageView infoSign = (ImageView) findViewById(R.id.infoSign);
         infoSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showInstruction();
+                showInstructions();
             }
         });
+    }
+
+    public void showInstructions() {
+        Utils.showDialog(MainActivity.this, getString(R.string.informationTItle), getString(R.string.informationText));
     }
 }

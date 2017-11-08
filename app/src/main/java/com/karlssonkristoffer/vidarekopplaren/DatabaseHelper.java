@@ -13,17 +13,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "databasehelper";
 
     private static final int VERSION = 10;
-    private static final String PHONE_NUMBER_TABLE = "phone_numbers";
-    private static final String HAS_CALLED_TABLE = "has_called";
-    private static final String FORWARD_END_TABLE = "forward_end_table";
-    private static final String SHOULD_KILL_FORWARDING_TABLE = "should_kill_forwarding_table";
-    private static final String COL_0 = "ID";
-    private static final String COL_1_PHONE_NUMBER_TABLE = "phoneNumber";
-    private static final String COL_2_PHONE_NUMBER_TABLE = "timestamp";
-    
-    private static final String COL_1_HAS_CALLED_TABLE = "currentlyCalling";
-    private static final String COL_1_FORWARD_END_TABLE = "callEnds";
-    private static final String COL_1_SHOULD_KILL_FORWARDING_TABLE = "ShouldKillForwarding";
+    public static final String PHONE_NUMBER_TABLE = "phone_numbers";
+    public static final String HAS_CALLED_TABLE = "has_called";
+    public static final String FORWARD_END_TABLE = "forward_end_table";
+    public static final String SHOULD_KILL_FORWARDING_TABLE = "should_kill_forwarding_table";
+    public static final String COL_0 = "ID";
+    public static final String COL_1_PHONE_NUMBER_TABLE = "phoneNumber";
+    public static final String COL_2_PHONE_NUMBER_TABLE = "timestamp";
+
+    public static final String COL_1_HAS_CALLED_TABLE = "currentlyCalling";
+    public static final String COL_1_FORWARD_END_TABLE = "callEnds";
+    public static final String COL_1_SHOULD_KILL_FORWARDING_TABLE = "ShouldKillForwarding";
 
     public DatabaseHelper(Context context) {
         super(context, PHONE_NUMBER_TABLE, null, VERSION);
@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllPhoneNumbers() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM "
+        String query = "SELECT rowid _id, * FROM "
                 + PHONE_NUMBER_TABLE
                 + " ORDER BY DATETIME ("
                 + COL_2_PHONE_NUMBER_TABLE
@@ -156,6 +156,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public void deletePhoneNumber(long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String deleteItem = "DELETE FROM "
+            + PHONE_NUMBER_TABLE
+            + " WHERE id = '"
+            + id
+            + "'";
+        db.execSQL(deleteItem);
+    }
 
     private void createShouldKillForwardingTable(SQLiteDatabase db) {
         String createShouldKillForwardingTable = "CREATE TABLE "
@@ -185,20 +194,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void createHasCalledTable(SQLiteDatabase db) {
         String createHasCalledTable = "CREATE TABLE "
-            + HAS_CALLED_TABLE
-            + " ("
-            + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COL_1_HAS_CALLED_TABLE + " INTEGER "
-            + ")";
+                + HAS_CALLED_TABLE
+                + " ("
+                + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_1_HAS_CALLED_TABLE + " INTEGER "
+                + ")";
         db.execSQL(createHasCalledTable);
 
         String setStartValue = "INSERT INTO "
                 + HAS_CALLED_TABLE
                 + " ("
                 + COL_1_HAS_CALLED_TABLE
-                +") VALUES (0)";
+                + ") VALUES (0)";
         db.execSQL(setStartValue);
     }
+
     private void createForwardEndTable(SQLiteDatabase db) {
         String createForwardEndTable = "CREATE TABLE "
         + FORWARD_END_TABLE
@@ -215,5 +225,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         +") VALUES ('00:00')";
         db.execSQL(setStartValue);
     }
-
 }
