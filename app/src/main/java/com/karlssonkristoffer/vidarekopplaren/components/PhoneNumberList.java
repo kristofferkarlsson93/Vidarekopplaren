@@ -24,12 +24,14 @@ import java.util.concurrent.Callable;
 
 public class PhoneNumberList {
 
+    private final int CHOSEN_COLOR = 0xCC70ffaa;
+    private final int NEUTRAL_COLOR = 0x00000000;
+
     private DatabaseHelper dbHelper;
     private Context context;
     private ListView phoneNumberListView;
     private View prelClickedNumber;
     private PhoneNumber currentPhoneNumber;
-    private Cursor cursor;
 
     public PhoneNumberList(DatabaseHelper dbHelper, Context context, ListView phoneNumberListView) {
         this.dbHelper = dbHelper;
@@ -49,10 +51,10 @@ public class PhoneNumberList {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        view.setBackgroundColor(0xCC70ffaa);
+                        view.setBackgroundColor(CHOSEN_COLOR);
                         currentPhoneNumber = new PhoneNumber(String.valueOf(parent.getItemAtPosition(position)));
                         if(prelClickedNumber != null && prelClickedNumber != view) {
-                            prelClickedNumber.setBackgroundColor(0x00000000);
+                            prelClickedNumber.setBackgroundColor(NEUTRAL_COLOR);
                         }
                         prelClickedNumber = view;
                     }
@@ -74,7 +76,7 @@ public class PhoneNumberList {
 
     public void delete(long id) {
         this.dbHelper.deletePhoneNumber(id);
-        this.update();
+        this.create();
     }
 
     public void update() {
