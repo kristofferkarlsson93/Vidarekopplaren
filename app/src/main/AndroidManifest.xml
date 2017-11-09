@@ -15,11 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            >
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,6 +31,18 @@
             android:name=".CurrentlyForwardingActivity"
             android:label="@string/title_activity_currently_forwarding"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver android:name=".widget.ForwardControlWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON" />
+                <action android:name="com.karlssonkristoffer.vidarekopplaren.TIME_TEXT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/forward_control_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

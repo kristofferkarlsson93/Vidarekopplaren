@@ -42,6 +42,18 @@
             android:label="@string/title_activity_currently_forwarding"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <receiver android:name="com.karlssonkristoffer.vidarekopplaren.widget.ForwardControlWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON" />
+                <action android:name="com.karlssonkristoffer.vidarekopplaren.TIME_TEXT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/forward_control_widget_info" />
+        </receiver>
+
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"
             android:authorities="com.karlssonkristoffer.vidarekopplaren.com.android.tools.fd.runtime.InstantRunContentProvider"

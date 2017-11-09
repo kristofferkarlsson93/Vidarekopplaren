@@ -16,5 +16,7 @@
     </string>
     <string name="deleteHeader">Radera</string>
     <string name="deleteQuestion">Vill du radera telefonnummret?</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
