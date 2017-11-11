@@ -3292,8 +3292,8 @@ containing a value of this type.
         public static final int useLogo=0x7f0e0020;
         public static final int view_offset_helper=0x7f0e000e;
         public static final int visible=0x7f0e00ad;
-        public static final int widgetPhoneNumberListView=0x7f0e0093;
-        public static final int widgetStartButton=0x7f0e0094;
+        public static final int widgetPhoneNumberText=0x7f0e0094;
+        public static final int widgetStartButton=0x7f0e0093;
         public static final int widgetTime=0x7f0e0092;
         public static final int withText=0x7f0e0045;
         public static final int wrap=0x7f0e0011;

@@ -911,8 +911,8 @@ int id up 0x7f0e000d
 int id useLogo 0x7f0e0020
 int id view_offset_helper 0x7f0e000e
 int id visible 0x7f0e00ad
-int id widgetPhoneNumberListView 0x7f0e0093
-int id widgetStartButton 0x7f0e0094
+int id widgetPhoneNumberText 0x7f0e0094
+int id widgetStartButton 0x7f0e0093
 int id widgetTime 0x7f0e0092
 int id withText 0x7f0e0045
 int id wrap 0x7f0e0011

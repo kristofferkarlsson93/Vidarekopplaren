@@ -129,6 +129,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public String getLatestUsedPhoneNumber() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String result = " ";
+        String getLatest = "SELECT * FROM "
+                + PHONE_NUMBER_TABLE
+                + " ORDER BY "
+                + COL_2_PHONE_NUMBER_TABLE
+                + " DESC LIMIT 1";
+
+        Cursor data = db.rawQuery(getLatest, null);
+        if (data.getCount() > 0) {
+            data.moveToFirst();
+            result = data.getString(1);
+        }
+        return result;
+    }
+
+    public void setLatestUsedPhoneNumber(int id) {
+
+    }
+
     public void setShouldKillForwarding(boolean shouldKillForwarding) {
         int statusInt = shouldKillForwarding ? 1 : 0;
         SQLiteDatabase db = this.getWritableDatabase();

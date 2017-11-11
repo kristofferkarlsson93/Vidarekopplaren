@@ -36,6 +36,8 @@ public class ForwardControlWidget extends AppWidgetProvider {
     }
 
     private static void setUpTimePicker(RemoteViews remoteViews, Context context) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(context);
+        remoteViews.setTextViewText(R.id.widgetTime, databaseHelper.getLatestStopForwardingTime());
         Intent intent = new Intent(TIME_TEXT);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.widgetTime, pendingIntent);
