@@ -1,4 +1,4 @@
-#Sat Nov 11 16:53:37 CET 2017
+#Sun Nov 12 21:00:14 CET 2017
 base.0=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_27f7161bd6ee181701f63714498a7b9e088a35ce
 renamed.1=classes.dex
 renamed.0=classes2.dex

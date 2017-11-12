@@ -1,12 +1,18 @@
 package com.karlssonkristoffer.vidarekopplaren;
 
+import android.app.Activity;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.karlssonkristoffer.vidarekopplaren.widget.ForwardControlWidget;
 
 import java.util.concurrent.Callable;
 
@@ -55,6 +61,16 @@ public class Utils {
                     }
                 })
                 .show();
+    }
+
+    public static void updateWidget(Context context) {
+        //Put in Utils
+        Activity thisContext = (Activity) context;
+        Intent intent = new Intent(thisContext, ForwardControlWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        int ids[] = AppWidgetManager.getInstance(thisContext.getApplication()).getAppWidgetIds(new ComponentName(thisContext.getApplication(), ForwardControlWidget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,ids);
+        context.sendBroadcast(intent);
     }
 
 

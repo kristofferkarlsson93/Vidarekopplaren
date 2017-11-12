@@ -58,6 +58,7 @@ public class PhoneNumberList {
                             prelClickedNumber.setBackgroundColor(NEUTRAL_COLOR);
                         }
                         prelClickedNumber = view;
+                        dbHelper.setLatestUsedPhoneNumber(id);
                     }
                 }
         );

@@ -3,6 +3,8 @@ package com.karlssonkristoffer.vidarekopplaren;
 import android.app.AlarmManager;
 import android.app.KeyguardManager;
 import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.karlssonkristoffer.vidarekopplaren.widget.ForwardControlWidget;
 
 public class CurrentlyForwardingActivity extends AppCompatActivity {
 
@@ -46,6 +50,7 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
                 resetAll();
             }
         });
+        Utils.updateWidget(this);
     }
 
     private void resetAll() {
@@ -64,4 +69,6 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         this.setIntent(intent);
     }
+
+
 }

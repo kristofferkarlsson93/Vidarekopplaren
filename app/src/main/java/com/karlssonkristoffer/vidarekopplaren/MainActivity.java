@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 import com.karlssonkristoffer.vidarekopplaren.components.PhoneNumberInputForm;
 import com.karlssonkristoffer.vidarekopplaren.components.PhoneNumberList;
 import com.karlssonkristoffer.vidarekopplaren.components.TimePicker;
+import com.karlssonkristoffer.vidarekopplaren.widget.ForwardControlWidget;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             forwarder.stop();
             dbHelper.setShouldKillForwarding(false);
         }
+        Utils.updateWidget(this);
     }
 
     private void setupComponents() {
@@ -108,11 +111,11 @@ public class MainActivity extends AppCompatActivity {
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, timePicker.getChosenTimeInMilis(), pendingIntent);
             startStatusForwardingActivity();
-            Log.d("testKarlsson", MainActivity.this.phoneNumberList.getCurrentPhoneNumber().getPhoneNumber());
-            //TelephonyManager manager;
+            forwarder.start(MainActivity.this.phoneNumberList.getCurrentPhoneNumber());
+
+                //TelephonyManager manager;
             //manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
             //manager.listen(MyPhoneStateListener.getInstance(), PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
-            forwarder.start(MainActivity.this.phoneNumberList.getCurrentPhoneNumber());
             }
         });
     }
@@ -121,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
         Intent startNextScreenIntent = new Intent(MainActivity.this, CurrentlyForwardingActivity.class);
         startActivity(startNextScreenIntent);
     }
-
 
     private boolean checkForErrorsBeforeForwarding(long chosenTime) {
         if (!phoneNumberList.hasChosenPhoneNumber()) {
@@ -156,9 +158,6 @@ public class MainActivity extends AppCompatActivity {
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.cancelAll();
     }
-
-
-
 
     private void manageInfoSign() {
         ImageView infoSign = (ImageView) findViewById(R.id.infoSign);

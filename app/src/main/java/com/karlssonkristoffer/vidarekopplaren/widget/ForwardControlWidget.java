@@ -24,29 +24,16 @@ public class ForwardControlWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-        /*DatabaseHelper dbHelper = new DatabaseHelper(context);
-        ListView phoneNumberListView = (ListView) context.findViewById(R.id.phoneNumberListView);
-        PhoneNumberList phoneNumberList = new PhoneNumberList(dbHelper, this, phoneNumberListView);
-        phoneNumberList.create();*/
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.forward_control_widget);
-        setUpOnClickListner(remoteViews, context);
+        setPhoneNumber(remoteViews, context);
         setUpTimePicker(remoteViews, context);
+        setUpOnClickListner(remoteViews, context);
+
+        Log.d("testK", "hej");
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
-    }
-
-    private static void setUpTimePicker(RemoteViews remoteViews, Context context) {
-        DatabaseHelper databaseHelper = new DatabaseHelper(context);
-        remoteViews.setTextViewText(R.id.widgetTime, databaseHelper.getLatestStopForwardingTime());
-        Intent intent = new Intent(TIME_TEXT);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.widgetTime, pendingIntent);
-    }
-
-    private static void setUpOnClickListner(RemoteViews remoteViews, Context context) {
-        Intent intent = new Intent(WIDGET_BUTTON);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.widgetStartButton, pendingIntent);
     }
 
     @Override
@@ -78,6 +65,25 @@ public class ForwardControlWidget extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
+    }
+
+    private static void setPhoneNumber(RemoteViews remoteViews, Context context) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        remoteViews.setTextViewText(R.id.widgetPhoneNumberText, dbHelper.getLatestUsedPhoneNumber());
+    }
+
+    private static void setUpTimePicker(RemoteViews remoteViews, Context context) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(context);
+        remoteViews.setTextViewText(R.id.widgetTime, databaseHelper.getLatestStopForwardingTime());
+        Intent intent = new Intent(TIME_TEXT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setOnClickPendingIntent(R.id.widgetTime, pendingIntent);
+    }
+
+    private static void setUpOnClickListner(RemoteViews remoteViews, Context context) {
+        Intent intent = new Intent(WIDGET_BUTTON);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setOnClickPendingIntent(R.id.widgetStartButton, pendingIntent);
     }
 
     protected PendingIntent getPendingSelfIntent(Context context, String action) {

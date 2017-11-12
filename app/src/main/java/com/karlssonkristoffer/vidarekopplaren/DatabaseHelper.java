@@ -7,12 +7,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "databasehelper";
 
-    private static final int VERSION = 10;
+    private static final int VERSION = 12;
     public static final String PHONE_NUMBER_TABLE = "phone_numbers";
     public static final String HAS_CALLED_TABLE = "has_called";
     public static final String FORWARD_END_TABLE = "forward_end_table";
@@ -146,8 +152,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public void setLatestUsedPhoneNumber(int id) {
-
+    public void setLatestUsedPhoneNumber(long id) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        dateFormat.format(new Date());
+        SQLiteDatabase db = this.getWritableDatabase();
+        Log.d("testKarlsson_ID", String.valueOf(id));
+        String update = "UPDATE "
+                + PHONE_NUMBER_TABLE
+                + " SET "
+                + COL_2_PHONE_NUMBER_TABLE
+                + " = CURRENT_TIMESTAMP"
+                + " WHERE ID = '"
+                + id
+                + "'";
+        db.execSQL(update);
     }
 
     public void setShouldKillForwarding(boolean shouldKillForwarding) {
