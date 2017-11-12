@@ -26,7 +26,6 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currently_forwarding);
-
         String stopTime = dbHelper.getLatestStopForwardingTime();
         KeyguardManager myKM = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
         if( myKM.inKeyguardRestrictedInputMode()) {

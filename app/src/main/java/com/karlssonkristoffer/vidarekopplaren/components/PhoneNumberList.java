@@ -44,7 +44,7 @@ public class PhoneNumberList {
         Cursor cursor = dbHelper.getAllPhoneNumbers();
         String[] fields = new String[] {DatabaseHelper.COL_1_PHONE_NUMBER_TABLE, DatabaseHelper.COL_0};
         int[] toView = new int[] {R.id.phoneNumber};
-        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context, R.layout.phonenumberrow, cursor, fields, toView, 0);
+        final SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context, R.layout.phonenumberrow, cursor, fields, toView, 0);
         phoneNumberListView.setAdapter(simpleCursorAdapter);
 
         phoneNumberListView.setOnItemClickListener(
@@ -52,7 +52,8 @@ public class PhoneNumberList {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         view.setBackgroundColor(CHOSEN_COLOR);
-                        currentPhoneNumber = new PhoneNumber(String.valueOf(parent.getItemAtPosition(position)));
+                        Cursor cursor = (Cursor) parent.getAdapter().getItem(position);
+                        currentPhoneNumber = new PhoneNumber(cursor.getString(2)); // 2 is the index of the phoneNumber
                         if(prelClickedNumber != null && prelClickedNumber != view) {
                             prelClickedNumber.setBackgroundColor(NEUTRAL_COLOR);
                         }

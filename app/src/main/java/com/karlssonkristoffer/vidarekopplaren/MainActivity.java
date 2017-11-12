@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ContextThemeWrapper;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, timePicker.getChosenTimeInMilis(), pendingIntent);
             startStatusForwardingActivity();
+            Log.d("testKarlsson", MainActivity.this.phoneNumberList.getCurrentPhoneNumber().getPhoneNumber());
             //TelephonyManager manager;
             //manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
             //manager.listen(MyPhoneStateListener.getInstance(), PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
