@@ -105,15 +105,9 @@ public class MainActivity extends AppCompatActivity {
            }
             dbHelper.setCurrentlyForwardingFlag(true);
             dbHelper.setStopForwardingTime(timePicker.getStopTime());
-            Intent startTimerIntent = new Intent(MainActivity.this, ResetForwardingReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, timePicker.getChosenTimeInMilis(), pendingIntent);
             startStatusForwardingActivity();
-            forwarder.start(MainActivity.this.phoneNumberList.getCurrentPhoneNumber());
-
-                //TelephonyManager manager;
+            forwarder.startWithTimerToStop(timePicker.getChosenTimeInMilis(), phoneNumberList.getCurrentPhoneNumber());
+            //TelephonyManager manager;
             //manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
             //manager.listen(MyPhoneStateListener.getInstance(), PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
             }

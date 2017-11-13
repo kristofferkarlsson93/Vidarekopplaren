@@ -1,17 +1,25 @@
 package com.karlssonkristoffer.vidarekopplaren.widget;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.RemoteViews;
+import android.widget.TextView;
 
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
+import com.karlssonkristoffer.vidarekopplaren.Forwarder;
+import com.karlssonkristoffer.vidarekopplaren.PhoneNumber;
 import com.karlssonkristoffer.vidarekopplaren.R;
+import com.karlssonkristoffer.vidarekopplaren.Utils;
 import com.karlssonkristoffer.vidarekopplaren.components.PhoneNumberList;
+import com.karlssonkristoffer.vidarekopplaren.components.TimePicker;
 
 /**
  * Implementation of App Widget functionality.
@@ -20,7 +28,6 @@ public class ForwardControlWidget extends AppWidgetProvider {
 
     public static String WIDGET_BUTTON = "com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON";
     public static String TIME_TEXT = "com.karlssonkristoffer.vidarekopplaren.TIME_TEXT";
-    private DatabaseHelper dbHelper;
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
@@ -31,7 +38,6 @@ public class ForwardControlWidget extends AppWidgetProvider {
         setUpTimePicker(remoteViews, context);
         setUpOnClickListner(remoteViews, context);
 
-        Log.d("testK", "hej");
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
     }
@@ -39,11 +45,36 @@ public class ForwardControlWidget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.forward_control_widget);
         if (WIDGET_BUTTON.equals(intent.getAction())) {
-            Log.d("testKarlsson", "klick");
+            if(dbHelper.getCurrentlyCallingFlag()) {
+                stopForwarding(context, dbHelper, remoteViews);
+            } else {
+                startForwarding(context, dbHelper, remoteViews);
+            }
         }
-        else if (TIME_TEXT.equals(intent.getAction())) {
-            Log.d("testKarlsson", "klickText");
+    }
+
+    private void stopForwarding(Context context, DatabaseHelper dbHelper, RemoteViews remoteViews) {
+        Utils.toastOut(context, "Avslutar vidarekoppling");
+        dbHelper.setCurrentlyForwardingFlag(false);
+        remoteViews.setInt(R.id.widgetStartButton, "setBackgroundColor", Color.BLACK);
+        Forwarder forwarder = new Forwarder(context);
+        forwarder.stop();
+    }
+
+    public void startForwarding(Context context, DatabaseHelper dbHelper, RemoteViews remoteViews) {
+        dbHelper.setCurrentlyForwardingFlag(true);
+        String stopTime = dbHelper.getLatestStopForwardingTime();
+        TimeInfo timeInfo = new TimeInfo(stopTime);
+        if(TimePicker.hasSetCorrectTime(timeInfo.getTimeInMillis())) {
+            remoteViews.setInt(R.id.widgetStartButton, "setBackgroundColor", Color.RED);
+            Utils.toastOut(context, "Startar vidarekoppling");
+            Forwarder forwarder = new Forwarder(context);
+            forwarder.startWithTimerToStop(timeInfo.getTimeInMillis(), new PhoneNumber(dbHelper.getLatestUsedPhoneNumber()));
+        } else {
+            Utils.toastOut(context, "Tiden är ogiltig. Öppna appen för att starta vidarekoppling");
         }
     }
 
@@ -53,7 +84,6 @@ public class ForwardControlWidget extends AppWidgetProvider {
 
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
-
         }
     }
 
@@ -82,7 +112,7 @@ public class ForwardControlWidget extends AppWidgetProvider {
 
     private static void setUpOnClickListner(RemoteViews remoteViews, Context context) {
         Intent intent = new Intent(WIDGET_BUTTON);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.widgetStartButton, pendingIntent);
     }
 

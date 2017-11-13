@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.karlssonkristoffer.vidarekopplaren.widget.ForwardControlWidget;
 
+import java.util.Calendar;
 import java.util.concurrent.Callable;
 
 /**
@@ -73,5 +74,13 @@ public class Utils {
         context.sendBroadcast(intent);
     }
 
+    public static Calendar getNewCalendar(int hour, int minute) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
+    }
 
 }

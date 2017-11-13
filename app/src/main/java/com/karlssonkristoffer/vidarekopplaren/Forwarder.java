@@ -2,6 +2,8 @@ package com.karlssonkristoffer.vidarekopplaren;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -31,6 +33,15 @@ public class Forwarder {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             context.startActivity(callForwardIntent);
         }
+    }
+
+    public void startWithTimerToStop(long stopTimeInMillis, PhoneNumber phoneNumber) {
+        Intent startTimerIntent = new Intent(context, ResetForwardingReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), MainActivity.CANCEL_INTENT_CODE , startTimerIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, stopTimeInMillis, pendingIntent);
+        start(phoneNumber);
+
     }
 
     public void stop() {
