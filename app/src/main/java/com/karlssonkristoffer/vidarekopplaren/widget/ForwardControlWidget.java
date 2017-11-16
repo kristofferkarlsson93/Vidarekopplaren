@@ -32,10 +32,19 @@ public class ForwardControlWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-
+        Log.d("testK", "i UpdateAppWidget");
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.forward_control_widget);
-        setPhoneNumber(remoteViews, context);
-        setUpTimePicker(remoteViews, context);
+        if(dbHelper.getCurrentlyCallingFlag()) {
+            remoteViews.setInt(R.id.widgetStartButton, "setBackgroundResource", R.drawable.widgetstopbutton);
+            remoteViews.setInt(R.id.widgetStartButton, "setText", R.string.stop);
+        } else {
+            remoteViews.setInt(R.id.widgetStartButton, "setBackgroundResource", R.drawable.widgetstartbutton);
+            remoteViews.setInt(R.id.widgetStartButton, "setText", R.string.forward);
+
+        }
+
+        setPhoneNumber(remoteViews, context, dbHelper);
+        setUpTimePicker(remoteViews, context, dbHelper);
         setUpOnClickListner(remoteViews, context);
 
         // Instruct the widget manager to update the widget
@@ -59,9 +68,9 @@ public class ForwardControlWidget extends AppWidgetProvider {
     private void stopForwarding(Context context, DatabaseHelper dbHelper, RemoteViews remoteViews) {
         Utils.toastOut(context, "Avslutar vidarekoppling");
         dbHelper.setCurrentlyForwardingFlag(false);
-        remoteViews.setInt(R.id.widgetStartButton, "setBackgroundColor", Color.BLACK);
         Forwarder forwarder = new Forwarder(context);
         forwarder.stop();
+        Utils.updateWidget(context);
     }
 
     public void startForwarding(Context context, DatabaseHelper dbHelper, RemoteViews remoteViews) {
@@ -69,13 +78,14 @@ public class ForwardControlWidget extends AppWidgetProvider {
         String stopTime = dbHelper.getLatestStopForwardingTime();
         TimeInfo timeInfo = new TimeInfo(stopTime);
         if(TimePicker.hasSetCorrectTime(timeInfo.getTimeInMillis())) {
-            remoteViews.setInt(R.id.widgetStartButton, "setBackgroundColor", Color.RED);
-            Utils.toastOut(context, "Startar vidarekoppling");
+            remoteViews.setInt(R.id.widgetStartButton, "setBackgroundResource", R.drawable.stopbutton);
             Forwarder forwarder = new Forwarder(context);
             forwarder.startWithTimerToStop(timeInfo.getTimeInMillis(), new PhoneNumber(dbHelper.getLatestUsedPhoneNumber()));
+            Utils.toastOut(context, "Startar vidarekoppling");
         } else {
             Utils.toastOut(context, "Tiden är ogiltig. Öppna appen för att starta vidarekoppling");
         }
+        Utils.updateWidget(context);
     }
 
     @Override
@@ -97,14 +107,12 @@ public class ForwardControlWidget extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    private static void setPhoneNumber(RemoteViews remoteViews, Context context) {
-        DatabaseHelper dbHelper = new DatabaseHelper(context);
+    private static void setPhoneNumber(RemoteViews remoteViews, Context context, DatabaseHelper dbHelper) {
         remoteViews.setTextViewText(R.id.widgetPhoneNumberText, dbHelper.getLatestUsedPhoneNumber());
     }
 
-    private static void setUpTimePicker(RemoteViews remoteViews, Context context) {
-        DatabaseHelper databaseHelper = new DatabaseHelper(context);
-        remoteViews.setTextViewText(R.id.widgetTime, databaseHelper.getLatestStopForwardingTime());
+    private static void setUpTimePicker(RemoteViews remoteViews, Context context, DatabaseHelper dbHelper) {
+        remoteViews.setTextViewText(R.id.widgetTime, dbHelper.getLatestStopForwardingTime());
         Intent intent = new Intent(TIME_TEXT);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.widgetTime, pendingIntent);

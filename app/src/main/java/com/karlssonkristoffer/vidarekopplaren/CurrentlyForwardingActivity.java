@@ -70,5 +70,13 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
         this.setIntent(intent);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!dbHelper.getCurrentlyCallingFlag()) {
+            this.finish();
+            return;
+        }
 
+    }
 }

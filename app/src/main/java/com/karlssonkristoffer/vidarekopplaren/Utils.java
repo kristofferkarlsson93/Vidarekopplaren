@@ -65,11 +65,9 @@ public class Utils {
     }
 
     public static void updateWidget(Context context) {
-        //Put in Utils
-        Activity thisContext = (Activity) context;
-        Intent intent = new Intent(thisContext, ForwardControlWidget.class);
+        Intent intent = new Intent(context, ForwardControlWidget.class);
         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-        int ids[] = AppWidgetManager.getInstance(thisContext.getApplication()).getAppWidgetIds(new ComponentName(thisContext.getApplication(), ForwardControlWidget.class));
+        int ids[] = AppWidgetManager.getInstance(context.getApplicationContext()).getAppWidgetIds(new ComponentName(context.getApplicationContext(), ForwardControlWidget.class));
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,ids);
         context.sendBroadcast(intent);
     }

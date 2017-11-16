@@ -27,6 +27,7 @@ public class Forwarder {
 
     public void start(PhoneNumber phoneNumber) {
         Intent callForwardIntent = new Intent(Intent.ACTION_CALL);
+        callForwardIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Uri forwardData = phoneNumber.getPhoneNumberWithForwardPrefix(operatorHolder.getOperatorName());
         callForwardIntent.setData(forwardData);
 

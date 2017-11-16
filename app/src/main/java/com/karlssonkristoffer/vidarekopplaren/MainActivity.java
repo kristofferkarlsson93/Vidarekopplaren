@@ -166,4 +166,12 @@ public class MainActivity extends AppCompatActivity {
     public void showInstructions() {
         Utils.showDialog(MainActivity.this, getString(R.string.informationTItle), getString(R.string.informationText));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(dbHelper.getCurrentlyCallingFlag()) {
+            startStatusForwardingActivity();
+        }
+    }
 }
