@@ -61,6 +61,7 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
         alarmManager.cancel(stopCancelTimer);
         Forwarder forwarder = new Forwarder(this);
         forwarder.stop();
+        Utils.updateWidget(this);
         this.finish();
     }
 
@@ -73,6 +74,7 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Utils.updateWidget(this);
         if(!dbHelper.getCurrentlyCallingFlag()) {
             this.finish();
             return;

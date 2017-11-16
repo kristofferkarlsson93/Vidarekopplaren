@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Nov 16 22:11:09 CET 2017
+#Thu Nov 16 22:18:28 CET 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png

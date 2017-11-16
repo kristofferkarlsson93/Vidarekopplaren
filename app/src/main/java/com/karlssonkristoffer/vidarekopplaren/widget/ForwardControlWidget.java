@@ -34,7 +34,9 @@ public class ForwardControlWidget extends AppWidgetProvider {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         Log.d("testK", "i UpdateAppWidget");
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.forward_control_widget);
-        if(dbHelper.getCurrentlyCallingFlag()) {
+        String stopTime = dbHelper.getLatestStopForwardingTime();
+        TimeInfo timeInfo = new TimeInfo(stopTime);
+        if(dbHelper.getCurrentlyCallingFlag() && TimePicker.hasSetCorrectTime(timeInfo.getTimeInMillis())) {
             remoteViews.setInt(R.id.widgetStartButton, "setBackgroundResource", R.drawable.widgetstopbutton);
             remoteViews.setInt(R.id.widgetStartButton, "setText", R.string.stop);
         } else {
@@ -74,10 +76,10 @@ public class ForwardControlWidget extends AppWidgetProvider {
     }
 
     public void startForwarding(Context context, DatabaseHelper dbHelper, RemoteViews remoteViews) {
-        dbHelper.setCurrentlyForwardingFlag(true);
         String stopTime = dbHelper.getLatestStopForwardingTime();
         TimeInfo timeInfo = new TimeInfo(stopTime);
         if(TimePicker.hasSetCorrectTime(timeInfo.getTimeInMillis())) {
+            dbHelper.setCurrentlyForwardingFlag(true);
             remoteViews.setInt(R.id.widgetStartButton, "setBackgroundResource", R.drawable.stopbutton);
             Forwarder forwarder = new Forwarder(context);
             forwarder.startWithTimerToStop(timeInfo.getTimeInMillis(), new PhoneNumber(dbHelper.getLatestUsedPhoneNumber()));

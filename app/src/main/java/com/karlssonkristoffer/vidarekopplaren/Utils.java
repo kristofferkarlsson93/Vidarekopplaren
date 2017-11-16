@@ -24,7 +24,7 @@ import java.util.concurrent.Callable;
 public class Utils {
 
     public static void toastOut(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
     public static void showDialog(Context context, String title, String message) {
