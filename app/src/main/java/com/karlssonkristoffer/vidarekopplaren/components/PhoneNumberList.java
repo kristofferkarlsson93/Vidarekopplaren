@@ -78,6 +78,7 @@ public class PhoneNumberList {
 
     public void delete(long id) {
         this.dbHelper.deletePhoneNumber(id);
+        Utils.updateWidget(context);
         this.create();
     }
 

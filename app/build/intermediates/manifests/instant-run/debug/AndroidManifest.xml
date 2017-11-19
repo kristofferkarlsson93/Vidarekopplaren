@@ -46,7 +46,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON" />
-                <action android:name="com.karlssonkristoffer.vidarekopplaren.TIME_TEXT" />
+                <action android:name="com.karlssonkristoffer.vidarekopplaren.START_APP" />
             </intent-filter>
 
             <meta-data

@@ -1,24 +1,18 @@
 package com.karlssonkristoffer.vidarekopplaren.widget;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.ListView;
 import android.widget.RemoteViews;
-import android.widget.TextView;
 
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
 import com.karlssonkristoffer.vidarekopplaren.Forwarder;
+import com.karlssonkristoffer.vidarekopplaren.MainActivity;
 import com.karlssonkristoffer.vidarekopplaren.PhoneNumber;
 import com.karlssonkristoffer.vidarekopplaren.R;
 import com.karlssonkristoffer.vidarekopplaren.Utils;
-import com.karlssonkristoffer.vidarekopplaren.components.PhoneNumberList;
 import com.karlssonkristoffer.vidarekopplaren.components.TimePicker;
 
 /**
@@ -27,12 +21,11 @@ import com.karlssonkristoffer.vidarekopplaren.components.TimePicker;
 public class ForwardControlWidget extends AppWidgetProvider {
 
     public static String WIDGET_BUTTON = "com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON";
-    public static String TIME_TEXT = "com.karlssonkristoffer.vidarekopplaren.TIME_TEXT";
+    public static String START_APP = "com.karlssonkristoffer.vidarekopplaren.START_APP";
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-        Log.d("testK", "i UpdateAppWidget");
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.forward_control_widget);
         String stopTime = dbHelper.getLatestStopForwardingTime();
         TimeInfo timeInfo = new TimeInfo(stopTime);
@@ -46,7 +39,7 @@ public class ForwardControlWidget extends AppWidgetProvider {
         }
 
         setPhoneNumber(remoteViews, context, dbHelper);
-        setUpTimePicker(remoteViews, context, dbHelper);
+        setUpAppStartOnClick(remoteViews, context, dbHelper);
         setUpOnClickListner(remoteViews, context);
 
         // Instruct the widget manager to update the widget
@@ -64,6 +57,11 @@ public class ForwardControlWidget extends AppWidgetProvider {
             } else {
                 startForwarding(context, dbHelper, remoteViews);
             }
+        } else if (START_APP.equals(intent.getAction())) {
+            Intent startAppIntent = new Intent(context, MainActivity.class);
+            context.startActivity(startAppIntent);
+
+
         }
     }
 
@@ -113,11 +111,12 @@ public class ForwardControlWidget extends AppWidgetProvider {
         remoteViews.setTextViewText(R.id.widgetPhoneNumberText, dbHelper.getLatestUsedPhoneNumber());
     }
 
-    private static void setUpTimePicker(RemoteViews remoteViews, Context context, DatabaseHelper dbHelper) {
+    private static void setUpAppStartOnClick(RemoteViews remoteViews, Context context, DatabaseHelper dbHelper) {
         remoteViews.setTextViewText(R.id.widgetTime, dbHelper.getLatestStopForwardingTime());
-        Intent intent = new Intent(TIME_TEXT);
+        Intent intent = new Intent(START_APP);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.widgetTime, pendingIntent);
+        remoteViews.setOnClickPendingIntent(R.id.widgetPhoneNumberLayout, pendingIntent);
+        remoteViews.setOnClickPendingIntent(R.id.widgetTimeLayout, pendingIntent);
     }
 
     private static void setUpOnClickListner(RemoteViews remoteViews, Context context) {

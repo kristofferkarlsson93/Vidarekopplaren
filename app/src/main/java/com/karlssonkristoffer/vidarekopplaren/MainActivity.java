@@ -90,8 +90,17 @@ public class MainActivity extends AppCompatActivity {
         newPhoneNumberText = (EditText) findViewById(R.id.newPhoneNumberText);
         final Button addButton = (Button) findViewById(R.id.addButton);
         final FloatingActionButton addPhoneNumberButton = (FloatingActionButton) findViewById(R.id.addPhonenumberButton);
+        final TextView phoneNumberInstruction = (TextView) findViewById(R.id.PhoneNumberInstruction);
 
-        phoneNumberInputForm = new PhoneNumberInputForm(this, dbHelper, newPhoneNumberText, addButton, addPhoneNumberButton, phoneNumberList);
+        phoneNumberInputForm = new PhoneNumberInputForm(
+            this,
+            dbHelper,
+            newPhoneNumberText,
+            addButton,
+            addPhoneNumberButton,
+            phoneNumberList,
+            phoneNumberInstruction
+        );
         phoneNumberInputForm.create();
     }
 

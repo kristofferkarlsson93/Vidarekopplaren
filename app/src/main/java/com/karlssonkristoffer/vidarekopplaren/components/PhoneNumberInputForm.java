@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
@@ -27,6 +28,7 @@ public class PhoneNumberInputForm {
     private Button addButton;
     private FloatingActionButton addPhoneNumberButton;
     private PhoneNumberList phoneNumberList;
+    private TextView instructionText;
     private EditText phoneNumberTextField;
 
     public PhoneNumberInputForm(
@@ -35,7 +37,8 @@ public class PhoneNumberInputForm {
             EditText phoneNumberTextField,
             Button addButton,
             FloatingActionButton addPhoneNumberButton,
-            PhoneNumberList phoneNumberList
+            PhoneNumberList phoneNumberList,
+            TextView instructionText
     ) {
 
         this.context = (MainActivity) context;
@@ -44,11 +47,13 @@ public class PhoneNumberInputForm {
         this.addButton = addButton;
         this.addPhoneNumberButton = addPhoneNumberButton;
         this.phoneNumberList = phoneNumberList;
+        this.instructionText = instructionText;
     }
 
     public void create() {
         addPhoneNumberButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(final View v) {
+                instructionText.setVisibility(View.GONE);
                 phoneNumberTextField.setVisibility(View.VISIBLE);
                 phoneNumberTextField.requestFocus();
                 showKeyboard();
@@ -68,6 +73,7 @@ public class PhoneNumberInputForm {
                         if(phoneNumberTextField.getText().length() < 1 ) {
                             addButton.setVisibility(View.GONE);
                             phoneNumberTextField.setVisibility(View.GONE);
+                            instructionText.setVisibility(View.VISIBLE);
                             View view = context.getCurrentFocus();
                             if (view != null) {
                                 hideKeyboard(view);
@@ -105,6 +111,7 @@ public class PhoneNumberInputForm {
                         }
                         addButton.setVisibility(View.GONE);
                         phoneNumberTextField.setVisibility(View.GONE);
+                        instructionText.setVisibility(View.VISIBLE);
                     }
                 });
             }

@@ -43,7 +43,7 @@ public class Utils {
                 .show();
     }
 
-    public static void showDialog(Context context, String title, String message, final Callable<?> callback) {
+    public static void showDialog(final Context context, String title, String message, final Callable<?> callback) {
         final AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.InformationDialog));
@@ -57,7 +57,7 @@ public class Utils {
                         try {
                             callback.call();
                         } catch (Exception e) {
-                            Log.d("Utils", "Hoppsan");
+                            Utils.toastOut(context, "Kunde ej utföra åtgärden.");
                         }
                     }
                 })

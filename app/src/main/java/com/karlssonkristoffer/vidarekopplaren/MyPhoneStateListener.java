@@ -19,7 +19,6 @@ public class MyPhoneStateListener extends PhoneStateListener {
 
     @Override
     public void onCallForwardingIndicatorChanged(boolean cfi) {
-        Log.d("testKarlsson", "Call state changed: " + cfi);
         super.onCallForwardingIndicatorChanged(cfi);
 
     }

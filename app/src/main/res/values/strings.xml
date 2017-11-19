@@ -12,7 +12,9 @@
         Denna app fungerar enbart på telefoner där vidarekoppling är tillåten. \n\n
         Välj telefonnummer att vidarekoppla till och tid för att avsluta vidarekoppling.\n\n
         Notera att om telefonen är låst när vald tid inträffar kommer vidarekopplingen
-        att avslutas när du låser upp telefonen nästa gång.
+        att avslutas när du låser upp telefonen nästa gång. \n\n
+        Psst.. Det finns en Widget till appen också, där man kan vidarekoppla till senast använda
+        tid och nummer.
     </string>
     <string name="deleteHeader">Radera</string>
     <string name="deleteQuestion">Vill du radera telefonnummret?</string>

@@ -91,7 +91,7 @@ receiver#com.karlssonkristoffer.vidarekopplaren.widget.ForwardControlWidget
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:35:9-45:20
 	android:name
 		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:35:19-62
-intent-filter#android.appwidget.action.APPWIDGET_UPDATE+com.karlssonkristoffer.vidarekopplaren.TIME_TEXT+com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON
+intent-filter#android.appwidget.action.APPWIDGET_UPDATE+com.karlssonkristoffer.vidarekopplaren.START_APP+com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:36:13-40:29
 action#android.appwidget.action.APPWIDGET_UPDATE
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:37:17-84
@@ -101,7 +101,7 @@ action#com.karlssonkristoffer.vidarekopplaren.WIDGET_BUTTON
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:38:17-95
 	android:name
 		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:38:25-92
-action#com.karlssonkristoffer.vidarekopplaren.TIME_TEXT
+action#com.karlssonkristoffer.vidarekopplaren.START_APP
 ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:39:17-91
 	android:name
 		ADDED from C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:39:25-88

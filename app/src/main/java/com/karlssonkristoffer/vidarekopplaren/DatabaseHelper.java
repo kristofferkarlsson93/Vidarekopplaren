@@ -156,7 +156,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
         dateFormat.format(new Date());
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d("testKarlsson_ID", String.valueOf(id));
         String update = "UPDATE "
                 + PHONE_NUMBER_TABLE
                 + " SET "
