@@ -3087,13 +3087,13 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020051;
         public static final int abc_vector_test=0x7f020052;
         public static final int avd_hide_password=0x7f020053;
-        public static final int avd_hide_password_1=0x7f020074;
-        public static final int avd_hide_password_2=0x7f020075;
-        public static final int avd_hide_password_3=0x7f020076;
+        public static final int avd_hide_password_1=0x7f020073;
+        public static final int avd_hide_password_2=0x7f020074;
+        public static final int avd_hide_password_3=0x7f020075;
         public static final int avd_show_password=0x7f020054;
-        public static final int avd_show_password_1=0x7f020077;
-        public static final int avd_show_password_2=0x7f020078;
-        public static final int avd_show_password_3=0x7f020079;
+        public static final int avd_show_password_1=0x7f020076;
+        public static final int avd_show_password_2=0x7f020077;
+        public static final int avd_show_password_3=0x7f020078;
         public static final int blue=0x7f020055;
         public static final int circle=0x7f020056;
         public static final int design_bottom_navigation_item_background=0x7f020057;
@@ -3113,18 +3113,17 @@ containing a value of this type.
         public static final int notification_bg_normal=0x7f020065;
         public static final int notification_bg_normal_pressed=0x7f020066;
         public static final int notification_icon_background=0x7f020067;
-        public static final int notification_template_icon_bg=0x7f020072;
-        public static final int notification_template_icon_low_bg=0x7f020073;
+        public static final int notification_template_icon_bg=0x7f020071;
+        public static final int notification_template_icon_low_bg=0x7f020072;
         public static final int notification_tile_bg=0x7f020068;
         public static final int notify_panel_notification_icon_bg=0x7f020069;
-        public static final int peach=0x7f02006a;
-        public static final int shinehashtag=0x7f02006b;
-        public static final int startbutton=0x7f02006c;
-        public static final int stopbutton=0x7f02006d;
-        public static final int stopwatch=0x7f02006e;
-        public static final int widgetsnapshop=0x7f02006f;
-        public static final int widgetstartbutton=0x7f020070;
-        public static final int widgetstopbutton=0x7f020071;
+        public static final int shinehashtag=0x7f02006a;
+        public static final int startbutton=0x7f02006b;
+        public static final int stopbutton=0x7f02006c;
+        public static final int stopwatch=0x7f02006d;
+        public static final int widgetsnapshop=0x7f02006e;
+        public static final int widgetstartbutton=0x7f02006f;
+        public static final int widgetstopbutton=0x7f020070;
     }
     public static final class id {
         public static final int PhoneNumberInstruction=0x7f0e0083;
@@ -3748,6 +3747,11 @@ containing a value of this type.
         public static final int ThemeOverlay_AppCompat_Dialog=0x7f0a012b;
         public static final int ThemeOverlay_AppCompat_Dialog_Alert=0x7f0a012c;
         public static final int ThemeOverlay_AppCompat_Light=0x7f0a012d;
+        /** 
+    <item name="android:textColorPrimary">#3acdff</item>
+    <item name="android:textColorSecondary">#3acdff</item>
+    
+         */
         public static final int TimePickerTheme=0x7f0a012e;
         public static final int Widget_AppCompat_ActionBar=0x7f0a012f;
         public static final int Widget_AppCompat_ActionBar_Solid=0x7f0a0130;
