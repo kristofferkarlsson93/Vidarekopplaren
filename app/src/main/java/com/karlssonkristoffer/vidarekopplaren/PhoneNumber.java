@@ -23,7 +23,7 @@ public class PhoneNumber {
 
     public static final String OPERATOR_TELIA = "Telia";
     public static final String OPERATOR_TELIA_S = "Telia S";
-    public static final String OPERATOR_TELE2 = "Tele2";
+    public static final String OPERATOR_TELE2 = "Tele2 SE";
     public static final String OPERATOR_VIMLA = "Vimla";
     public static final String OPERATOR_TELENOR = "Telenor";
 
