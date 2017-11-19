@@ -35,12 +35,12 @@ public class Utils {
             builder = new AlertDialog.Builder(context);
         }
         builder.setTitle(title)
-                .setMessage(message)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .show();
+            .setMessage(message)
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            })
+            .show();
     }
 
     public static void showDialog(final Context context, String title, String message, final Callable<?> callback) {
@@ -51,17 +51,17 @@ public class Utils {
             builder = new AlertDialog.Builder(context);
         }
         builder.setTitle(title)
-                .setMessage(message)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            callback.call();
-                        } catch (Exception e) {
-                            Utils.toastOut(context, "Kunde ej utföra åtgärden.");
-                        }
+            .setMessage(message)
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    try {
+                        callback.call();
+                    } catch (Exception e) {
+                        Utils.toastOut(context, "Kunde ej utföra åtgärden.");
                     }
-                })
-                .show();
+                }
+            })
+            .show();
     }
 
     public static void updateWidget(Context context) {
