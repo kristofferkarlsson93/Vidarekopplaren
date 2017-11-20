@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
-
 import com.karlssonkristoffer.vidarekopplaren.appActivities.CurrentlyForwardingActivity;
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
 import com.karlssonkristoffer.vidarekopplaren.Forwarder;

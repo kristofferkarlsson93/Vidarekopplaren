@@ -3,7 +3,6 @@ package com.karlssonkristoffer.vidarekopplaren.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
 import com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity;
 
