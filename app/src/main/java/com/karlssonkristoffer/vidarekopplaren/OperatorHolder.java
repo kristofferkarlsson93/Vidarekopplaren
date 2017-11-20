@@ -14,7 +14,6 @@ public class OperatorHolder {
 
     public OperatorHolder(Context context) {
         manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        Log.d("testKarlsson", manager.getNetworkOperatorName());
     }
 
     public String getOperatorName() {

@@ -55,10 +55,7 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
 
     private void resetAll() {
         dbHelper.setCurrentlyForwardingFlag(false);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        PendingIntent stopCancelTimer;
-        stopCancelTimer = PendingIntent.getBroadcast(this, MainActivity.CANCEL_INTENT_CODE, new Intent(this, ResetForwardingReceiver.class), PendingIntent.FLAG_CANCEL_CURRENT);
-        alarmManager.cancel(stopCancelTimer);
+        Utils.cancelTimer(this);
         Forwarder forwarder = new Forwarder(this);
         forwarder.stop();
         Utils.updateWidget(this);

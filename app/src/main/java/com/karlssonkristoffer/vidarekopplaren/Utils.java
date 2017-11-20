@@ -1,6 +1,8 @@
 package com.karlssonkristoffer.vidarekopplaren;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -79,6 +81,19 @@ public class Utils {
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
         return calendar;
+    }
+
+
+    public static void cancelTimer(Context context) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        PendingIntent stopCancelTimer;
+        stopCancelTimer = PendingIntent.getBroadcast(
+            context,
+            MainActivity.CANCEL_INTENT_CODE,
+            new Intent(context, ResetForwardingReceiver.class),
+            PendingIntent.FLAG_CANCEL_CURRENT);
+
+        alarmManager.cancel(stopCancelTimer);
     }
 
 }
