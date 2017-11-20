@@ -9,7 +9,7 @@ import android.widget.RemoteViews;
 
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
 import com.karlssonkristoffer.vidarekopplaren.Forwarder;
-import com.karlssonkristoffer.vidarekopplaren.MainActivity;
+import com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity;
 import com.karlssonkristoffer.vidarekopplaren.PhoneNumber;
 import com.karlssonkristoffer.vidarekopplaren.R;
 import com.karlssonkristoffer.vidarekopplaren.Utils;

@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity
-            android:name="com.karlssonkristoffer.vidarekopplaren.MainActivity"
+            android:name="com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity"
             android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,10 +35,10 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.karlssonkristoffer.vidarekopplaren.ResetForwardingReceiver" />
+        <receiver android:name="com.karlssonkristoffer.vidarekopplaren.receivers.ResetForwardingReceiver" />
 
         <activity
-            android:name="com.karlssonkristoffer.vidarekopplaren.CurrentlyForwardingActivity"
+            android:name="com.karlssonkristoffer.vidarekopplaren.appActivities.CurrentlyForwardingActivity"
             android:label="@string/title_activity_currently_forwarding"
             android:theme="@style/AppTheme.NoActionBar" />
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.karlssonkristoffer.vidarekopplaren.CurrentlyForwardingActivity">
+    tools:context="com.karlssonkristoffer.vidarekopplaren.appActivities.CurrentlyForwardingActivity">
 
     <include layout="@layout/content_currently_forwarding" />
 

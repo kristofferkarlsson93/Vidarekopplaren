@@ -1,6 +1,5 @@
 package com.karlssonkristoffer.vidarekopplaren;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -11,9 +10,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
-import android.util.Log;
 import android.widget.Toast;
 
+import com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity;
+import com.karlssonkristoffer.vidarekopplaren.receivers.ResetForwardingReceiver;
 import com.karlssonkristoffer.vidarekopplaren.widget.ForwardControlWidget;
 
 import java.util.Calendar;

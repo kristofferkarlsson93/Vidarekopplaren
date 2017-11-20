@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blue"
-    tools:context="com.karlssonkristoffer.vidarekopplaren.MainActivity"
+    tools:context="com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity"
     android:clipToPadding="false">
 
     <android.support.design.widget.FloatingActionButton

@@ -1,4 +1,4 @@
-#Fri Oct 13 20:18:37 CEST 2017
+#Mon Nov 20 20:24:56 CET 2017
 file.2=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_cdb7dc3e8371765cc6ad0187aa053ccb7e081070\\classes.dex
 base.2=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_cdb7dc3e8371765cc6ad0187aa053ccb7e081070
 file.1=C\:\\Users\\karls\\programming\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_448175060f8626af807443963331ce8100f47ceb\\classes.dex

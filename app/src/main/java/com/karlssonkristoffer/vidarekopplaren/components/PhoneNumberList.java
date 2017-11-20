@@ -2,20 +2,16 @@ package com.karlssonkristoffer.vidarekopplaren.components;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
-import com.karlssonkristoffer.vidarekopplaren.MainActivity;
 import com.karlssonkristoffer.vidarekopplaren.PhoneNumber;
 import com.karlssonkristoffer.vidarekopplaren.R;
 import com.karlssonkristoffer.vidarekopplaren.Utils;
 
-import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 /**

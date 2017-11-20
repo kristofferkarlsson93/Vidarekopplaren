@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name=".appActivities.MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +25,10 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ResetForwardingReceiver" />
+        <receiver android:name=".receivers.ResetForwardingReceiver" />
 
         <activity
-            android:name=".CurrentlyForwardingActivity"
+            android:name=".appActivities.CurrentlyForwardingActivity"
             android:label="@string/title_activity_currently_forwarding"
             android:theme="@style/AppTheme.NoActionBar" />
 

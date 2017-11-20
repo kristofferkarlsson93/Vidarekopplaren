@@ -10,9 +10,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
-import static com.karlssonkristoffer.vidarekopplaren.PermissionCodes.*;
+import com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity;
+import com.karlssonkristoffer.vidarekopplaren.receivers.ResetForwardingReceiver;
 
 
 public class Forwarder {

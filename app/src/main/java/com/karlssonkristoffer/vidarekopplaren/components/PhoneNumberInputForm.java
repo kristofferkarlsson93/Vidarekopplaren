@@ -10,10 +10,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.karlssonkristoffer.vidarekopplaren.DatabaseHelper;
-import com.karlssonkristoffer.vidarekopplaren.MainActivity;
+import com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity;
 import com.karlssonkristoffer.vidarekopplaren.PhoneNumber;
 import com.karlssonkristoffer.vidarekopplaren.Utils;
 
