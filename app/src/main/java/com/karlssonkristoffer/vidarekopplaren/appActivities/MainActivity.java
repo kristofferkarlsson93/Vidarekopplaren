@@ -43,14 +43,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dbHelper = new DatabaseHelper(this);
-
+        super.onCreate(savedInstanceState);
         if(dbHelper.getCurrentlyCallingFlag()) {
             startStatusForwardingActivity();
         }
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         cancelPosibleNotifications();
 
         if(isFirstTime()) {
@@ -179,5 +177,15 @@ public class MainActivity extends AppCompatActivity {
         if(dbHelper.getCurrentlyCallingFlag()) {
             startStatusForwardingActivity();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

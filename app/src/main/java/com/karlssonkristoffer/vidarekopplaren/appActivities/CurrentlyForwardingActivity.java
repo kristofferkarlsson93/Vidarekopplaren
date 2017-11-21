@@ -24,11 +24,11 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dbHelper = new DatabaseHelper(this);
+        super.onCreate(savedInstanceState);
         if(!this.dbHelper.getCurrentlyCallingFlag()) {
             finish();
             return;
         }
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currently_forwarding);
         String stopTime = dbHelper.getLatestStopForwardingTime();
         KeyguardManager myKM = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
@@ -76,6 +76,15 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
             this.finish();
             return;
         }
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

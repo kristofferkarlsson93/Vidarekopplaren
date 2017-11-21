@@ -92,21 +92,12 @@
         <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\pre-dexed\debug\classes_dfc79a387ffa24fad5e7aba3d9196197cc391300.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\subProject\circleviewlibrary\build\intermediates\bundles\default\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.2"
-        sha1="925b72d1b8e8165898758c638aae2ab393e69d00">
-        <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\pre-dexed\debug\classes_77005098373b196b10047a68f933a865342658d8.jar" />
-    </item>
-    <item
         is-multidex="true"
         jar="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="10778658246be37ce98bd2162866bdec2dbbbc5e">
+        sha1="ea7a805a77d1134c01da3e182f69f3a0ee1a7ddb">
         <dex dex="C:\Users\karls\programming\Vidarekopplaren\Vidarekopplaren\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8fa12710152c23742145037f3e937d5de3ad7c19\classes.dex" />
     </item>
     <item

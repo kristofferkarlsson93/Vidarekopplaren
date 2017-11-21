@@ -99,7 +99,7 @@ public class ForwardControlWidget extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
+        Utils.updateWidget(context);
     }
 
     @Override
@@ -130,5 +130,7 @@ public class ForwardControlWidget extends AppWidgetProvider {
         intent.setAction(action);
         return PendingIntent.getBroadcast(context, 0, intent, 0);
     }
+
+
 }
 
