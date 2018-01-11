@@ -114,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
            }
             dbHelper.setCurrentlyForwardingFlag(true);
             dbHelper.setStopForwardingTime(timePicker.getStopTime());
+            if(Utils.wantsToHideApp(MainActivity.this)) {
+                dbHelper.setShouldHideApp(true);
+            }
             startStatusForwardingActivity();
             forwarder.startWithTimerToStop(timePicker.getChosenTimeInMilis(), phoneNumberList.getCurrentPhoneNumber());
             //TelephonyManager manager;

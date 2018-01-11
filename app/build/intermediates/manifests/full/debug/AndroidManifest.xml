@@ -59,7 +59,8 @@
         <activity
             android:name="com.karlssonkristoffer.vidarekopplaren.appActivities.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity" >
+            android:parentActivityName="com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity"
+            android:theme="@style/settingsTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity" />

@@ -1,4 +1,4 @@
-#Thu Jan 11 22:43:08 CET 2018
+#Thu Jan 11 23:26:35 CET 2018
 base.0=C\:\\Users\\karls\\programming\\apps\\Vidarekopplaren\\Vidarekopplaren\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\9
 path.0=classes.dex
 renamed.0=classes.dex

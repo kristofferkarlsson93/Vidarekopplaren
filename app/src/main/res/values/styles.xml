@@ -33,4 +33,8 @@
         <item name="android:colorAccent">@color/white</item>
     </style>
 
+    <style name="settingsTheme" parent="Theme.AppCompat">
+        <item name="android:windowBackground">@drawable/blue</item>
+    </style>
+
 </resources>

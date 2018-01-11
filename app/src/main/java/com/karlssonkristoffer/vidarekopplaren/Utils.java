@@ -7,7 +7,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.widget.Toast;
@@ -94,6 +96,12 @@ public class Utils {
             PendingIntent.FLAG_CANCEL_CURRENT);
 
         alarmManager.cancel(stopCancelTimer);
+    }
+
+    public static Boolean wantsToHideApp(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Boolean hide = preferences.getBoolean("example_switch", false);
+        return hide;
     }
 
 }

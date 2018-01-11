@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
+ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
 MERGED from [com.android.support:design:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\design-25.3.0.aar\f3965e216ae353e039530a4af951595a\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.0.aar\ca28dbc60285f8e059650e212ff68d3f\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\041dcaf5f526b452d6c0f498126040d7\AndroidManifest.xml:2:1-11:12
@@ -17,20 +17,20 @@ MERGED from [com.android.support:support-media-compat:25.3.0] C:\Users\karls\.gr
 MERGED from [com.android.support:support-core-utils:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.3.0.aar\3d38b45541079750f8aca8d592e63f93\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-core-ui:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.3.0.aar\659f029c1776af019cd70645a1b0d9ca\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\support-compat-25.3.0.aar\0168576bded2247b22e7eb6b9f0e63a6\AndroidManifest.xml:17:1-31:12
-INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
 	package
 		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:3:5-53
 		INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
 		INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:1-58:12
 		INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:2:11-69
@@ -55,7 +55,7 @@ ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\s
 	android:name
 		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:9:22-87
 application
-ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:11:5-55:19
+ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:11:5-56:19
 MERGED from [com.android.support:design:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\design-25.3.0.aar\f3965e216ae353e039530a4af951595a\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:design:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\design-25.3.0.aar\f3965e216ae353e039530a4af951595a\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\karls\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.0.aar\ca28dbc60285f8e059650e212ff68d3f\AndroidManifest.xml:29:5-20
@@ -145,19 +145,21 @@ ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\s
 	android:name
 		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:43:17-58
 activity#com.karlssonkristoffer.vidarekopplaren.appActivities.SettingsActivity
-ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:47:9-54:20
+ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:47:9-55:20
 	android:parentActivityName
-		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:50:13-69
+		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:51:13-69
 	android:label
 		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:49:13-60
+	android:theme
+		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:50:13-49
 	android:name
 		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:48:13-59
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:51:13-53:101
+ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:52:13-54:101
 	android:value
-		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:53:17-98
+		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:54:17-98
 	android:name
-		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:52:17-63
+		ADDED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml:53:17-63
 uses-sdk
 INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\karls\programming\apps\Vidarekopplaren\Vidarekopplaren\app\src\main\AndroidManifest.xml

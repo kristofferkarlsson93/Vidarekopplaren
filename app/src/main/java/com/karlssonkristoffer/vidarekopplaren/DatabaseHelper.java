@@ -5,20 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "databasehelper";
 
-    private static final int VERSION = 12;
+    private static final int VERSION = 14;
     public static final String PHONE_NUMBER_TABLE = "phone_numbers";
     public static final String HAS_CALLED_TABLE = "has_called";
     public static final String FORWARD_END_TABLE = "forward_end_table";
@@ -31,6 +27,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_1_FORWARD_END_TABLE = "callEnds";
     public static final String COL_1_SHOULD_KILL_FORWARDING_TABLE = "ShouldKillForwarding";
 
+    public static final String SHOULD_HIDE_APP_TABLE = "hide_app_table";
+    public static final String COL_1_SHOULD_HIDE_APP = "hideApp";
+
+
     public DatabaseHelper(Context context) {
         super(context, PHONE_NUMBER_TABLE, null, VERSION);
     }
@@ -41,7 +41,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         createHasCalledTable(db);
         createForwardEndTable(db);
         createShouldKillForwardingTable(db);
+        createShouldHideAppTable(db);
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -53,11 +56,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + FORWARD_END_TABLE;
         String dropShouldKillForwardingTable = "DROP TABLE IF EXISTS "
                 + SHOULD_KILL_FORWARDING_TABLE;
+        String dropShouldHideAppTable = "DROP TABLE IF EXISTS "
+                + SHOULD_HIDE_APP_TABLE;
 
         db.execSQL(dropPhoneNumberTableIfExists);
         db.execSQL(dropHasCalledTableIfExists);
         db.execSQL(dropForwardEndTableIfExists);
         db.execSQL(dropShouldKillForwardingTable);
+        db.execSQL(dropShouldHideAppTable);
         onCreate(db);
     }
 
@@ -194,6 +200,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public boolean getShouldHideApp() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String getFlag = "SELECT * FROM "
+                + SHOULD_HIDE_APP_TABLE;
+        Cursor data = db.rawQuery(getFlag, null);
+        if (data.getCount() > 0) {
+            data.moveToFirst();
+            result = data.getInt(1) > 0;
+        }
+        return result;
+    }
+
+    public void setShouldHideApp(boolean shouldHide) {
+        int statusInt = shouldHide ? 1 : 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String update = "UPDATE "
+                + SHOULD_HIDE_APP_TABLE
+                + " SET "
+                + COL_1_SHOULD_HIDE_APP
+                + " = '"
+                + statusInt
+                + "'";
+
+        db.execSQL(update);
+    }
+
     public void deletePhoneNumber(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String deleteItem = "DELETE FROM "
@@ -261,6 +294,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         + " ("
         + COL_1_FORWARD_END_TABLE
         +") VALUES ('00:00')";
+        db.execSQL(setStartValue);
+    }
+
+    private void createShouldHideAppTable(SQLiteDatabase db) {
+        String createHasCalledTable = "CREATE TABLE "
+                + SHOULD_HIDE_APP_TABLE
+                + " ("
+                + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_1_SHOULD_HIDE_APP + " INTEGER "
+                + ")";
+        db.execSQL(createHasCalledTable);
+
+        String setStartValue = "INSERT INTO "
+                + SHOULD_HIDE_APP_TABLE
+                + " ("
+                + COL_1_SHOULD_HIDE_APP
+                + ") VALUES (0)";
         db.execSQL(setStartValue);
     }
 }
