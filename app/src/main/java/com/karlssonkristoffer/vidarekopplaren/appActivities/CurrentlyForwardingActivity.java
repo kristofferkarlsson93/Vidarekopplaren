@@ -31,8 +31,8 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_currently_forwarding);
         String stopTime = dbHelper.getLatestStopForwardingTime();
-        KeyguardManager myKM = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
-        if( myKM.inKeyguardRestrictedInputMode()) {
+        KeyguardManager keyGuardManager = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
+        if( keyGuardManager.inKeyguardRestrictedInputMode()) {
             PhoneOnlockedReciver reciver = new PhoneOnlockedReciver();
             IntentFilter filter = new IntentFilter();
             filter.addAction(Intent.ACTION_USER_PRESENT);
@@ -50,7 +50,23 @@ public class CurrentlyForwardingActivity extends AppCompatActivity {
                 resetAll();
             }
         });
-        Utils.updateWidget(this);
+        if (true) {
+            putAppInBackground();
+        }
+    }
+
+    private void putAppInBackground() {
+        new android.os.Handler().postDelayed(
+            new Runnable() {
+                public void run() {
+                    Utils.updateWidget(CurrentlyForwardingActivity.this);
+                    Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                    homeIntent.addCategory(Intent.CATEGORY_HOME);
+                    homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(homeIntent);
+                }
+            },
+            3000);
     }
 
     private void resetAll() {

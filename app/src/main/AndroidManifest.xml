@@ -43,6 +43,15 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/forward_control_widget_info" />
         </receiver>
+
+        <activity
+            android:name=".appActivities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".appActivities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

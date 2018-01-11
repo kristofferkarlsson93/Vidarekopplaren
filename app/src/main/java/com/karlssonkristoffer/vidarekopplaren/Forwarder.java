@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.karlssonkristoffer.vidarekopplaren.appActivities.MainActivity;
 import com.karlssonkristoffer.vidarekopplaren.receivers.ResetForwardingReceiver;
@@ -42,7 +43,6 @@ public class Forwarder {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, stopTimeInMillis, pendingIntent);
         start(phoneNumber);
-
     }
 
     public void stop() {

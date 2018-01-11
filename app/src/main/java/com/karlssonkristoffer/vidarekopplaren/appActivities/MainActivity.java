@@ -56,13 +56,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(new String[] {Manifest.permission.READ_PHONE_STATE}, PermissionCodes.PERMISSION_REQUEST_OPERATOR);
-            requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, PermissionCodes.PERMISSION_CALL);
+            requestPermissions(
+                new String[] {Manifest.permission.CALL_PHONE},
+                PermissionCodes.PERMISSION_CALL
+            );
+            requestPermissions(
+                new String[] {Manifest.permission.READ_PHONE_STATE},
+                PermissionCodes.PERMISSION_REQUEST_OPERATOR);
         }
         startForwardingButton = (Button) findViewById(R.id.startForwardingButton);
         setupComponents();
         manageStartForwardingButton();
         manageInfoSign();
+        manageSettingsSign();
         forwarder = new Forwarder(this);
         if(dbHelper.getShouldKillForwarding()) {
             forwarder.stop();
@@ -165,6 +171,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void manageSettingsSign() {
+        ImageView settingsSign = (ImageView) findViewById(R.id.settingsSign);
+        settingsSign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settingsIntent);
+            }
+        });
+    }
+
 
     public void showInstructions() {
         Utils.showDialog(MainActivity.this, getString(R.string.informationTItle), getString(R.string.informationText));
